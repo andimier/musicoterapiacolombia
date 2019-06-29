@@ -1,0 +1,73 @@
+
+#thumbs { 
+	
+	width:90%; 
+	margin:0 auto;
+	margin-bottom:100px;
+	padding-bottom:50px;
+	/*background-color:#f00*/
+}
+
+.cnt_videos{
+	float:left;
+	width:28%;
+	padding:20px 2% 20px 2%;
+	overflow:hidden;
+	
+	/*background-color:#999*/
+}
+
+
+
+.cnt_videos:hover{
+	opacity:.8
+
+}
+.cnt_imgVideo{
+	position:relative;
+	width:100%;
+	margin:0 auto;
+	
+	overflow:hidden;
+/*background-color:#ff0;*/
+	/*border:3px solid #999966;*/
+	
+}
+
+.mascara {
+	position:absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+/*
+	background-image:url(../imagenes/mascara8.png);
+	background-size:100%
+*/
+}
+
+.tt_video{
+	
+	width:85%;
+	height:25px;
+	margin:10px auto;
+	padding:15px 0 15px 0;
+	text-align:center;
+	
+	color:#666;
+	
+	font-size:16px;
+	font-style:italic;
+	/*text-transform:uppercase;*/
+	opacity:1;
+	/*background-color:#666;*/
+	border:2px solid #fff;
+	-webkit-border-radius: 5px;
+	-moz-border-radius:5px;
+	border-radius:5px;
+	
+	behavior: url(PIE.htc);
+}
+.tt_video a{color:#fff}
+
+

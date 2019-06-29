@@ -1,0 +1,169 @@
+#presentacion {
+	position:relative;
+	max-width:800px;
+	padding:0 0 0 0;	
+	margin:100px auto 70px auto;
+	
+	overflow:hidden;
+	/*border:1px solid #ccc;*/
+	/*background-color:#f00;*/
+
+}
+
+#presentacion img {
+	width:100%;
+}
+
+
+
+#nombre{
+	position:absolute;
+	width:70%;
+	height:100%;
+	top:0;
+	left:0;
+	/*background-color:#f00;*/
+	/*border:1px solid #000*/
+}
+
+
+#nombre h2{
+	padding:110px 0 0 40px;
+	font-family:'Times New Roman', serif;
+	font-weight:300;
+	font-style:italic;
+	font-size:38px;
+	color:#999966;
+}
+
+#nombre h3{
+	padding:0px 0 0 40px;
+	font-family:'Times New Roman', serif;
+	font-weight:300;
+	font-style:italic;
+	font-size:24px;
+	color:#999;
+
+}
+
+#nombre h4{
+	padding:0px 0 0 120px;
+	font-family:'Times New Roman', serif;
+	font-weight:300;
+	font-style:italic;
+	font-size:14px;
+	color:#999;
+
+}
+
+
+
+
+
+#cnt_tarjetas{
+	max-width:850px;
+	min-height:650px;
+	margin:30px auto 0 auto;
+	
+}
+
+#t1{
+	float:left;
+	width:33%;
+	height:280px;
+	margin:0 3% 0 0;
+	padding:10px 2% 10px 2%;
+	/*background-color:#999;*/
+	
+	text-align:center;
+	font-family:'Times New Roman', serif;
+	font-size: 18px;
+	font-style:italic;
+	color:#999;
+	
+	
+}
+
+
+
+#video1{
+	width:100%;
+	height:100%;
+	background-color:#000;
+}
+
+#t3{
+	
+	width:80%;
+	padding: 10px 5% 50px 5%;
+	margin:30px auto 0 auto;
+	/*background-color:#ff0;*/
+	
+	font-family:'Times New Roman', serif;
+	font-size: 20px;
+	font-style:italic;
+	color:#999;
+	text-align:center;
+}
+
+#t3 h2{
+	font-weight:300
+}
+
+
+#video_inicio{
+	float:none;
+	width:60%;
+	height:280px;
+	margin:0 auto 0 auto;
+	padding:20px 20px 20px 20px;
+	border:1px solid #999966;
+
+}
+
+.cnt_noticia{
+	width:90%;
+	height:70px;
+	padding:10px 10px 10px 10px;
+	margin:0 auto 15px auto;
+	background-color:#eee;
+	
+	overflow:hidden;
+}
+
+.noticia{
+	width:96%;
+	height:50px;
+	margin:0 0 0 0;
+	padding:10px 2% 10px 2%;
+	background-color:#eee;
+	border:1px solid #999966;
+	overflow:hidden;
+}
+
+.noticia a{
+	color:#999966
+}
+
+.noticia a:hover{
+	color:#666;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

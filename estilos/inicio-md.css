@@ -1,0 +1,47 @@
+#presentacion {
+	width:90%;
+	margin:100px auto 0 auto;
+}
+
+#nombre h2{
+	padding:20px 0 0 0px;
+
+	font-size:25px;
+}
+
+#nombre h3{
+	padding:0px 0 0 0px;
+	font-size:20px;
+}
+
+#nombre h4{
+	padding:0px 0 0 20px;
+	font-size:18px;
+}
+
+#cnt_tarjetas{
+	
+	width:90%;
+	margin:30px auto 0 auto;
+}
+
+#t3 h2{
+	font-weight:300
+}
+
+#video_inicio{
+	width:100%;
+}
+
+
+.cnt_noticia{
+	width:90%;
+	height:100px;
+	
+}
+.noticia{
+	height:80px;
+	padding:10px 5px 10px 5px;
+	margin:0 0 25px 0;
+	
+}

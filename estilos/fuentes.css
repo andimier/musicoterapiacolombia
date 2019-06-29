@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'bebas_neueregular';
+    src: url('fuentes/bebasneue-webfont.eot');
+    src: url('fuentes/bebasneue-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fuentes/bebasneue-webfont.woff2') format('woff2'),
+         url('fuentes/bebasneue-webfont.woff') format('woff'),
+         url('fuentes/bebasneue-webfont.ttf') format('truetype'),
+         url('fuentes/bebasneue-webfont.svg#bebas_neueregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}

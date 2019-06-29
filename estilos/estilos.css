@@ -1,0 +1,56 @@
+body {margin:0px; background-image:url(images/fondo_01.jpg);}
+a {color:#633;}
+a:hover {color: #666;}
+a img {border:none;}
+hr {color:#CCC;}
+
+#contenedor {width:980px; height:auto; margin:auto;}
+#cabezote{
+	position:relative;
+	width:980px; height:320px; background-image:url(../diseno/cabezote_01.jpg);}
+#cuerpo{width:980; height:auto;}
+
+#contenido{float:left; padding:20px; margin-left:20px; width:603px; height:auto; font-family:"Times New Roman", Times, serif;}
+.titulo {float:left; color:#000; font-size:24px; font-size:22px; font-weight:bold;}
+.fecha {clear:both; color:#696; font-size:22px; font-weight:bold; margin-top:5px;}
+.noticias  {clear:both;  color:#999; font-size:18px;}
+
+#lateral {float:left; width:317px; height:470px; background-image:url(../diseno/lateral_03.jpg);}
+#lateral h1 {color: #633; margin-top:5px; font-size:24px;}
+#lateral h2 {color:#633; margin-top:1em; font-size:18px;}
+#lateral h3 {color:#633; }
+#lateral p {color: #FFF; font-family:Arial, Helvetica, sans-serif; font-size:12px}
+
+.facebook {height:50px; background-image:url(images/facebook.png);}
+
+#footer{
+	clear:both; 
+	width:980px; 
+	height:189px; 
+	background-image:url(../diseno/footer_05.jpg); margin:0px;
+	cursor:pointer;
+}
+
+#f1{float:left; width:370px;}
+#f2{float:left; width:300px; height:120px; margin-left:210px;}
+.footerlink{width:350px; height:70px; }
+.footerface{width:350px; height:76px; }
+
+
+#login {
+	position:absolute;
+	left:0px;
+	top:0px;
+	width:100px; 
+	height:20px;
+	cursor:pointer;
+}
+
+#sitio {
+	position:absolute;
+	right:0px;
+	top:0px;
+	width:480px; 
+	height:320px;
+	cursor:pointer;
+}

@@ -1,0 +1,48 @@
+#cnt_formulario{
+	position:relative;
+	max-width:960px;
+	height: 600px;
+	padding:0px 20px 20px 20px;
+	margin:0px auto;
+	
+}
+
+label {
+	float: left;
+	width:20%;
+	margin-right:2%;
+	
+	font-family:'Times New Roman', serif;
+	font-style:italic;
+	text-align:right;
+	color:#666;
+	/*background-color:#00f*/
+}
+
+input[type="text"], textarea {
+	float: left;
+	width: 60%;
+	padding: 10px 2%;
+	font-family:Times New Roman, sans-serif;
+	font-size: 15px;
+	margin: 0px 0px 10px 0px;
+	border: 1px solid #ccc;
+	
+}
+
+
+textarea {
+	float:left;
+	width: 60%;
+	font-size: 13px;
+	margin:0 0 30px 0px;
+}
+
+.cnt_campos{
+	
+	width: 80%;
+	height:320px;
+	margin:30px 0 0 0;
+	padding:60px 0 20px 0;
+	background-color:#eee;
+}

@@ -1,0 +1,87 @@
+#presentacion {
+	width:90%;
+	height:110px;
+	margin:150px auto 0 auto;
+}
+
+#nombre{
+	position:absolute;
+	width:100%;
+	height:100%;
+	top:0;
+	left:0;
+	
+}
+
+
+#nombre h2{
+	padding:20px 0 0 40px;
+
+	font-size:18px;
+}
+
+#nombre h3{
+	padding:0px 0 0 40px;
+	font-family:'Times New Roman', serif;
+	font-weight:300;
+	font-style:italic;
+	font-size:15px;
+	color:#999;
+
+}
+
+#nombre h4{
+	padding:0px 0 0 20px;
+	
+	font-size:12px;
+}
+
+#cnt_tarjetas{
+	width:90%;
+	margin:10px auto 0 auto;
+	
+}
+
+#t1{
+	float:none;
+	width:100%;
+	height:200px;
+	margin:0 3% 10px 0;
+	background-color:#f00;
+}
+
+#video_inicio{
+	float:none;
+	display:block;
+	width:90%;
+	height:170px;
+	padding:5px 5px 5px 5px;
+	margin:auto;
+	/*background-color:#ccc;*/
+}
+
+#t3{
+	
+	width:100%;
+	height:auto;
+	margin:0px auto 0 auto;
+	padding: 5px 0 30px 0;
+	font-size:17px;
+	
+}
+
+#t3 h2{
+	font-size:18px;
+}
+
+.cnt_noticia{
+	width:90%;
+	height:90px;
+	
+}
+.noticia{
+	height:70px;
+	padding:10px 5px 10px 5px;
+	margin:0 0 25px 0;
+	
+}

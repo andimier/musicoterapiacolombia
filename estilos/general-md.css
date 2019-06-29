@@ -1,0 +1,155 @@
+#franja_cabeza h3{
+	margin:8px 0 0 15px;
+	font-size:18px;
+}
+
+#franja_cabeza h4{
+	margin:2px 0 0 15px;
+	font-size:14px;
+}
+
+
+
+
+
+#tt h3{
+	padding: 5px 0 0 20px;
+	margin:10px 0 0 0;
+	
+	font-size:18px;
+	
+	/**/
+	
+	color:#999966;
+	
+}
+#tt h4{
+	padding: 2px 0 0 20px;
+	
+	font-size:14px;
+
+}
+
+
+#menu{
+	display:none;
+}
+
+
+#pestana_menu{
+	display:block;
+
+}
+
+
+
+#cnt_noticias{
+	position:fixed;
+	height:70px;
+	width:300px;
+	bottom:0;
+	left:55%;
+	margin-left:-150px;
+	
+}
+
+
+#esquina_izq{
+
+	width:70px;
+	height:70px;
+	bottom:0;
+	left:0;
+	
+}
+
+.cnt_contenidos{
+	width:auto;
+	margin:0 0 0 0px;
+	padding:0 30px 30px 30px;
+	
+
+}
+
+.contenidos{
+	
+	width:auto;
+	height:auto;
+	margin:130px auto 0px auto;
+	padding:0 0 0 0px;
+	
+	
+}
+
+.contenidos .texto {
+	
+	font-size:13px;
+	margin-top:20px;
+	padding: 0 30px 0 0;
+	
+}
+
+
+
+.imageneinfo{
+	float:left;
+	width:45%;
+	margin:0 20px 20px 0;
+	
+}
+
+
+.persona h2{
+	
+	margin:auto;
+	padding:30px 0 0 0;
+	font-size:22px;
+	
+}
+
+
+#logo-andimier{
+	position:fixed;
+	width:70px;
+	height:50px;
+	top:100%;
+	left:75%;
+	margin-top:-70px;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
