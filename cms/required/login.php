@@ -1,8 +1,4 @@
 <?php
-    if (!isset($_SESSION)) {
-        session_start();
-    }
-
     $username = '';
 	$password = '';
     $error_message = '';
@@ -42,10 +38,6 @@
     }
 
     function getHPassword() {
-        //algoritmos de encriptacion
-        //$hashed_password = md5($password);
-        //$hashed_password = hash($password);
-
         return trim(
             mysql_prep($_POST['password'])
         );
@@ -86,6 +78,8 @@
             exit;
         }
     }
+
+    if (!isset($_SESSION)) session_start();
 
 	if (isset($_POST['submit'])) {
 		if (empty(getErrors())) {
