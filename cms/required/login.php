@@ -1,6 +1,6 @@
 <?php
     $username = '';
-	$password = '';
+    $password = '';
     $error_message = '';
 
     require_once("required/php_functions.php");
@@ -81,16 +81,16 @@
 
     if (!isset($_SESSION)) session_start();
 
-	if (isset($_POST['submit'])) {
-		if (empty(getErrors())) {
+    if (isset($_POST['submit'])) {
+        if (empty(getErrors())) {
             initLogIn();
             $error_message = "El nombre de usuario o contraseña pueden estar errados.";
-		} else {
+        } else {
             $error_message = setErrorsMessages(getErrors());
-		}
-	} else {
-		if (isset($_GET['logout']) && $_GET['logout'] == 1) {
-			$error_message = "Has cerrado tu sesión. "	;
-		}
-	}
+        }
+    } else {
+        if (isset($_GET['logout']) && $_GET['logout'] == 1) {
+            $error_message = "Has cerrado tu sesión.";
+        }
+    }
 ?>
