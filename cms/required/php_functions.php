@@ -1,5 +1,9 @@
 <?php
     class PFunctions {
+        function getPhpVersion() {
+            return phpversion();
+        }
+
         function getPhpQuery($q_string, $connection) {
             $q = mysqli_query($connection, $q_string);
 
@@ -17,7 +21,12 @@
         function getFetchArray($query){
             return mysqli_fetch_array($query);;
         }
+
+        function getError($connection) {
+            return mysqli_error($connection);
+        }
     }
 
     $pFunctions = new PFunctions();
+    echo $pFunctions->getPhpVersion();
 ?>

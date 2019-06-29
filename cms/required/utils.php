@@ -1,5 +1,4 @@
 <?php
-
 	class Utils {
 		function redirect_to($location = NULL){
 			if ($location !=NULL){
@@ -21,21 +20,26 @@
 			return $value;
 		}
 
-		function confirm_query($result_set, $connection){
-			if (!$result_set) {
-				die("La busqueda en la Base de Datos fallo: " . mysql_error($connection));
-			}
-		}
+        function confirm_query($result_set) {
+            global $connection;
+            global $pFunctions;
 
-		function getSections(){
-			global $connection;
+            if (!$result_set) {
+                die("La busqueda en la Base de Datos fallo: " . $pFunctions->getError($connection));
+            }
+        }
 
-			$query = "SELECT * FROM secciones ORDER BY id ASC";
-			$grupo_secciones = mysqli_query($connection, $query);
-			$this->confirm_query($grupo_secciones);
+        function getSections(){
+            global $connection;
+            global $pFunctions;
 
-			return $grupo_secciones;
-		}
+            $query = "SELECT * FROM secciones ORDER BY id ASC";
+            $grupo_secciones = $pFunctions->getPhpQuery($query, $connection);
+
+            $this->confirm_query($grupo_secciones);
+
+            return $grupo_secciones;
+        }
 
 		function traer_seccion_por_id($seccion_id){
 			global $connection;
