@@ -9,12 +9,12 @@
 
     function getErrors() {
         $errors = array();
-		$required_fields = array('username','password');
+        $required_fields = array('username','password');
 
-		foreach($required_fields as $fieldname){
-			if (!isset($_POST[$fieldname]) || (empty($_POST[$fieldname])  && !is_numeric($_POST[$fieldname]))) {
-				$errors[] = $fieldname;
-			}
+        foreach($required_fields as $fieldname){
+            if (!isset($_POST[$fieldname]) || (empty($_POST[$fieldname])  && !is_numeric($_POST[$fieldname]))) {
+                $errors[] = $fieldname;
+            }
         }
 
         return $errors;
