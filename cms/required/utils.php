@@ -1,24 +1,26 @@
 <?php
 	class Utils {
-		function redirect_to($location = NULL){
-			if ($location !=NULL){
-				header("Location: {$location}");
-				exit;
-			}
-		}
+        function redirect_to($location = NULL) {
+            if ($location !=NULL) {
+                header("Location: {$location}");
+                exit;
+            }
+        }
 
-		function mysql_prep($value){
-			$magic_quotes_active = get_magic_quotes_gpc();
-			$new_enough_php = function_exists("mysql_real_scape_string");
+        function mysql_prep($value){
+            $magic_quotes_active = get_magic_quotes_gpc();
+            $new_enough_php = function_exists("mysql_real_scape_string");
 
-			if($new_enough_php){
-				if($magic_quotes_active){$value = stripslashes($value);}
-				$value = mysql_real_scape_string($value);
-			}else{
-				if(!$magic_quotes_active){$value = addslashes($value);}
-			}
-			return $value;
-		}
+            if( $new_enough_php) {
+                if ($magic_quotes_active) $value = stripslashes($value);
+
+                $value = mysql_real_scape_string($value);
+            } else {
+                if (!$magic_quotes_active) $value = addslashes($value);
+            }
+
+            return $value;
+        }
 
         function confirm_query($result_set) {
             global $connection;
