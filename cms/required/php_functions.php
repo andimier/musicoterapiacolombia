@@ -1,4 +1,6 @@
 <?php
+    // 5.5.0 por debajo de esta versión, utilizar la sintaxis vieja
+
     class PFunctions {
         function getPhpVersion() {
             return phpversion();
@@ -28,5 +30,4 @@
     }
 
     $pFunctions = new PFunctions();
-    echo $pFunctions->getPhpVersion();
 ?>

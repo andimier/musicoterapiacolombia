@@ -35,12 +35,15 @@
             global $connection;
             global $pFunctions;
 
-            $query = "SELECT * FROM secciones ORDER BY id ASC";
-            $grupo_secciones = $pFunctions->getPhpQuery($query, $connection);
+			$q = $pFunctions->getPhpQuery(
+				"SELECT * FROM secciones ORDER BY id ASC",
+				$connection
+			);
 
-            $this->confirm_query($grupo_secciones);
+			if ($q) return $q;
 
-            return $grupo_secciones;
+			return NULL;
+
         }
 
 		function traer_seccion_por_id($seccion_id){
