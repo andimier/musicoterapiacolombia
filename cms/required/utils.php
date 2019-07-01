@@ -1,7 +1,7 @@
 <?php
     class Utils {
         function redirect_to($location = NULL) {
-            if ($location !=NULL) {
+            if ($location != NULL) {
                 header("Location: {$location}");
                 exit;
             }
@@ -31,7 +31,7 @@
             }
         }
 
-        function getSections(){
+        function getSections() {
             global $connection;
             global $pFunctions;
 
@@ -43,7 +43,23 @@
             if ($q) return $q;
 
             return NULL;
+        }
 
+        function getEditingComponent() {
+            $editType = isset($_GET['editType']) ? $_GET['editType'] : 'content';
+
+            /*
+                sections
+                content
+                text
+            */
+
+            if (isset($editType)) {
+                return [
+                    'model'=>'components/edit-' . $editType . '.php',
+                    'html'=>'components/edit-' . $editType . '-html.php'
+                ];
+            }
         }
 
         function traer_seccion_por_id($seccion_id){

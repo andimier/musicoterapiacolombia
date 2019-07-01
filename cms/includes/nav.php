@@ -16,7 +16,7 @@
         WWW.NATALIABEHAINE.COM
     </h1>
 
-	<div id="user">
+	<div id="user" draggable="true">
         <?php echo $_SESSION['username']; ?>
     </div>
 
