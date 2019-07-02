@@ -1,5 +1,11 @@
 <?php
     class Utils {
+        private const CONTENT_TYPES = [
+            'sections',
+            'content',
+            'text'
+        ];
+
         function redirect_to($location = NULL) {
             if ($location != NULL) {
                 header("Location: {$location}");
@@ -31,20 +37,7 @@
             }
         }
 
-        function getSections() {
-            global $connection;
-            global $pFunctions;
-
-            $q = $pFunctions->getPhpQuery(
-                "SELECT * FROM sections ORDER BY id ASC"
-            );
-
-            if ($q) return $q;
-
-            return NULL;
-        }
-
-        function getEditingComponent() {
+        public static function getEditingComponent() {
             $editType = isset($_GET['editType']) ? $_GET['editType'] : 'content';
 
             /*

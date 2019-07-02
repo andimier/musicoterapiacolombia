@@ -1,6 +1,6 @@
 <?php
-    class Navigation {
-        function getSections() {
+    class Nav {
+        private function getSections() {
             global $connection;
             global $pFunctions;
 
@@ -11,27 +11,25 @@
             return ($q) ? $q : NULL;
         }
 
-        function getItemsData() {
+        static public function getItemsData() {
             global $pFunctions;
 
+            $sections = static::getSections();
             $data = [];
-            $sections = $this->getSections();
 
-            if ($sections) {
-                while ($item = $pFunctions->getFetchArray($sections)) {
-                    array_push($data, [
-                        'id' => $item['id'],
-                        'title' => $item['title'],
-                        'position' => $item['position']
-                    ]);
-                }
+            if (!$sections) return NULL;
 
-                return $data;
+            while ($item = $pFunctions->getFetchArray($sections)) {
+                array_push($data, [
+                    'id' => $item['id'],
+                    'title' => $item['title'],
+                    'position' => $item['position']
+                ]);
             }
+
+            return $data;
         }
     }
-
-    $nav = new Navigation();
 
     require_once('components/navigation/nav-html.php');
 ?>
