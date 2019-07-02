@@ -52,4 +52,5 @@
     }
 
     $section = new Section();
+    require_once('components/edit-content/edit-content-html.php');
 ?>

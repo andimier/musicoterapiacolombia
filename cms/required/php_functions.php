@@ -6,7 +6,9 @@
             return phpversion();
         }
 
-        function getPhpQuery($q_string, $connection) {
+        function getPhpQuery($q_string) {
+            global $connection;
+
             $q = mysqli_query($connection, $q_string);
 
             if (isset($q) && is_object($q) && !empty($q) && mysqli_num_rows($q)) {

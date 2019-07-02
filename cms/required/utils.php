@@ -36,8 +36,7 @@
             global $pFunctions;
 
             $q = $pFunctions->getPhpQuery(
-                "SELECT * FROM secciones ORDER BY id ASC",
-                $connection
+                "SELECT * FROM sections ORDER BY id ASC"
             );
 
             if ($q) return $q;
@@ -55,10 +54,10 @@
             */
 
             if (isset($editType)) {
-                return [
-                    'model'=>'components/edit-' . $editType . '.php',
-                    'html'=>'components/edit-' . $editType . '-html.php'
-                ];
+                $parentFolder = 'components/edit-' . $editType;
+                $file = '/edit-' . $editType . '.php';
+
+                return  $parentFolder . $file;
             }
         }
 

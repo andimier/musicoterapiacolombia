@@ -28,21 +28,31 @@ Textos
 Sections
 |id|seccion|plantila
 
-item: {
-    id:
-    sectionID:
-    parentItemID:
-    subContentType:
-    galleryID:
-    isSubContent: Boolean,
-    contentDesignType: String,
-    visible: Boolean,
-    type:
-    fecha:
-    title:
-    subTitulo:
-    contentImageSet: [],
-    subContentsTypes: [],
-    textos: [],
-    items: []
-}
+sections: [
+    {
+        id: String,
+        title: String,
+        position: Int
+    }
+]
+
+contentItems: [
+    {
+        id:
+        sectionID:
+        parentItemID:
+        subContentType:
+        galleryID:
+        isSubContent: Boolean,
+        contentDesignType: String,
+        visible: Boolean,
+        type:
+        fecha:
+        title:
+        subTitulo:
+        contentImageSet: [],
+        subContentsTypes: [],
+        textos: [],
+        items: []
+    }
+]

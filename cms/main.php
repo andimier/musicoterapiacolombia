@@ -3,9 +3,6 @@
     require_once("required/connection.php");
     require_once("required/php_functions.php");
     require_once("required/utils.php");
-    require_once(
-        $utils->getEditingComponent()['model']
-    );
 
     // encontrar_seccion_y_contenido_seleccionados();
 ?>
@@ -18,7 +15,7 @@
 
     <body>
         <?php include_once('includes/header.php'); ?>
-        <?php include_once('includes/nav.php'); ?>
+        <?php include_once('components/navigation/nav.php'); ?>
 
         <main>
             <div id="cnt_edicion">
@@ -45,7 +42,7 @@
                 <section id="editing-container">
                     <?php
                         require_once(
-                            $utils->getEditingComponent()['html']
+                            $utils->getEditingComponent()
                         );
                     ?>
                 </section>

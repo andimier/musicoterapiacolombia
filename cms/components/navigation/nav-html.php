@@ -21,17 +21,13 @@
     </div>
 
 	<nav class="navigation">
-        <?php if ($utils->getSections()): ?>
-            <?php while ($seccion = $pFunctions->getFetchArray($utils->getSections())): ?>
-                <ul class="secciones1">
-                    <li>
-                        <a href="editar-seccion.php?seccion=<?php echo $seccion['id']; ?>">
-                            <?php echo $seccion['titulo']; ?>
-                        </a>
-                    </li>
-                </ul>
-            <?php endwhile; ?>
-        <?php endif; ?>
+        <?php $navItems = $nav->getItemsData(); ?>
+
+        <ul>
+            <?php for ($i = 0; $i < count($navItems); $i++): ?>
+                <li><?php echo $navItems[$i]['title']; ?></li>
+            <?php endfor; ?>
+        </ul>
 
 		<a href="albumes.php">+ albumes</a>
 	</nav>
