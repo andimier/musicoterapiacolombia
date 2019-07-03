@@ -1,6 +1,6 @@
 <?php
     class Section {
-        function getSectionId() {
+        private function getSectionId() {
             if (isset($_GET['sectionId'])) {
                 return $_GET['sectionId'];
             } else {
@@ -8,7 +8,7 @@
             }
         }
 
-        function getSectionContents() {
+        private function getContent() {
             global $connection;
             global $pFunctions;
 
@@ -24,12 +24,22 @@
             return 'Not a valid query';
         }
 
-        function getSectionData() {
+        private function getMainImage() {
+            $mainImage = $this->getContent()['contentImageSet'];
+
+            if (empty($mainImage)) {
+                $mainImage = 'iconos/photo.png';
+            }
+
+            return $mainImage;
+        }
+
+        static public function getContentData() {
             global $pFunctions;
 
             $data = [];
 
-            while ($d = $this->getSectionContents()) {
+            while ($d = self::getContent()) {
                 $data = [
                     'title' => $d['title'],
                     'contentId' => $d['id']
@@ -39,18 +49,7 @@
 
             return $data;
         }
-
-        function getMainImage() {
-            $mainImage = $this->getSectionContents()['contentImageSet'];
-
-            if (empty($mainImage)) {
-                $mainImage = 'iconos/photo.png';
-            }
-
-            return $mainImage;
-        }
     }
 
-    $section = new Section();
     require_once('components/edit-content/edit-content-html.php');
 ?>
