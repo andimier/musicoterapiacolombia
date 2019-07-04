@@ -30,7 +30,7 @@
             $section = self::getSection();
             $data = [];
 
-            if ($section) {
+            if ($section && !empty($section)) {
                 while ($d = $pFunctions->getFetchArray($section)) {
                     $data = [
                         'title' => $d['title'],
