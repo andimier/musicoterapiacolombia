@@ -10,7 +10,7 @@
 <section>
     <?php
         $mainImage = $data['contentImage'];
-        require_once('includes/main-image.php');
+        require_once('components/main-image/main-image.php');
     ?>
 </section>
 

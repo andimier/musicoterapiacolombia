@@ -16,14 +16,3 @@
         <input id="bsubirimg" type="submit" name="botonsubirimagen" value="" class="fondo_negro"/>
     </form>
 </div>
-
-
-<script>
-    function myFunction(val) {
-        var rutaimagen = val.split('fakepath');
-        var laimagen = rutaimagen[rutaimagen.length-1];
-
-        $("#nm_imagen").text(laimagen);
-        $("#bsubirimg").css('display', 'block');
-    };
-</script>
