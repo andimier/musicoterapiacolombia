@@ -42,7 +42,7 @@
                 <section id="editing-container">
                     <?php
                         require_once(
-                            $utils->getEditingComponent()
+                            Utils::getEditingComponent()
                         );
                     ?>
                 </section>

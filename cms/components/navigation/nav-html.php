@@ -26,7 +26,10 @@
             <ul>
                 <?php for ($i = 0; $i < count($navItems); $i++): ?>
                     <li data-item-id="<?php echo $navItems[$i]['id']; ?>">
-                        <a href="main.php?editType=section&sectionId=<?php echo $navItems[$i]['id'];?>" target="_self">
+                        <a
+                            href=<?php echo Nav::getSectionUrl($navItems[$i]); ?>
+                            target="_self"
+                        >
                             <?php echo $navItems[$i]['title']; ?>
                         </a>
                     </li>

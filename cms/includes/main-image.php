@@ -1,6 +1,4 @@
-<a href="<?php echo 'editar-imagen.php?contenido_id='.$id.'&src='.$mainImage; ?>">
-    <img src="<?php echo $mainImage; ?>" width="165"/>
-</a>
+<img src="<?php echo $mainImage; ?>" width="165"/>
 
 <div class="cnt_nuevo_archivo">
     <form enctype="multipart/form-data" method="post">

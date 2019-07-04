@@ -54,6 +54,17 @@
             }
         }
 
+        public static function getMainImage($imageSet) {
+            $mainImage = 'resources/icons/photo.png';
+
+            if (!empty($imageSet)) {
+                $img_arr = explode($imageSet, ',');
+                $mainImage = $img_arr[0];
+            }
+
+            return $mainImage;
+        }
+
         function traer_seccion_por_id($seccion_id){
             global $connection;
             $query = "SELECT * FROM secciones WHERE id=" . $seccion_id ." LIMIT 1";
@@ -176,7 +187,4 @@
             return $grupo_imagenes_articulo;
         }
     }
-
-    $utils = new Utils();
-
 ?>

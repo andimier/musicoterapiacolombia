@@ -29,6 +29,15 @@
 
             return $data;
         }
+
+        static public function getSectionUrl($navItem) {
+            $url = 'main.php?';
+            $url .= 'editType=section';
+            $url .= '&sectionId=' . $navItem['id'];
+            $url .= '&sectionTitle=' . urlencode($navItem['title']);
+
+            return $url;
+        }
     }
 
     require_once('components/navigation/nav-html.php');

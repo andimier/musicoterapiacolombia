@@ -23,7 +23,7 @@
         }
 
         function getFetchArray($query){
-            return mysqli_fetch_array($query);;
+            return mysqli_fetch_array($query);
         }
 
         function getError($connection) {
