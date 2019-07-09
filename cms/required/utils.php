@@ -13,7 +13,7 @@
             }
         }
 
-        function mysql_prep($value){
+        public static function mysql_prep($value){
             $magic_quotes_active = get_magic_quotes_gpc();
             $new_enough_php = function_exists("mysql_real_scape_string");
 
@@ -38,7 +38,7 @@
         }
 
         public static function getEditingComponent() {
-            $editType = isset($_GET['editType']) ? $_GET['editType'] : 'content';
+            $editType = isset($_GET['contentType']) ? $_GET['contentType'] : 'content';
 
             /*
                 sections

@@ -4,8 +4,8 @@
     $error_message = '';
 
     require_once("required/php_functions.php");
-    require_once("includes/connection.php");
-    require_once("includes/functions.php");
+    require_once("required/connection.php");
+    require_once("required/utils.php");
 
     function getErrors() {
         $errors = array();
@@ -39,7 +39,7 @@
 
     function getHPassword() {
         return trim(
-            mysql_prep($_POST['password'])
+            Utils::mysql_prep($_POST['password'])
         );
 
     }
@@ -49,7 +49,7 @@
 
         if (isset($user)) {
             return trim(
-                mysql_prep($user)
+                Utils::mysql_prep($user)
             );
         }
 
@@ -57,19 +57,23 @@
     }
 
     function getUser($connection) {
+        global $pFunctions;
+
         $username = getUsername();
         $hashed_password = sha1(getHPassword());
         $q_string = "SELECT id, username FROM usuarios WHERE username = '{$username}' AND hashed_password = '{$hashed_password}'";
 
-		return getPhpQuery($q_string, $connection);;
+		return $pFunctions->getPhpQuery($q_string, $connection);;
     }
 
     function initLogIn() {
         global $connection;
+        global $pFunctions;
+
         $user = getUser($connection);
 
         if ($user) {
-            $u = getFetchArray($user);
+            $u = $pFunctions->getFetchArray($user);
 
             $_SESSION['user_id'] = $u['id'];
             $_SESSION['username'] = $u['username'];

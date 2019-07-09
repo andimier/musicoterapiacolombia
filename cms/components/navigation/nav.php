@@ -32,7 +32,7 @@
 
         static public function getSectionUrl($navItem) {
             $url = 'main.php?';
-            $url .= 'editType=section';
+            $url .= 'contentType=section';
             $url .= '&sectionId=' . $navItem['id'];
             $url .= '&sectionTitle=' . urlencode($navItem['title']);
 
