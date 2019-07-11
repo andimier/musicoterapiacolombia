@@ -12,71 +12,52 @@
     //     return $redirect;
     // }
 
-    class ImageFileNameSet {
-        static private $imageFileName = NULL;
-        static private $temp_path = NULL;
-        static private $imageFileBaseName = NULL;
-
-        public function __construct($imageFile) {
-            $this->imageFile = $_FILES['imageFile'];
-            $this->tempPath = $imageFile['tmp_name'];
-            $this->imageFileBaseName = basename($this->$imageFile['name']);
-        }
-
-        static private function getValidFileName() {
+    class FileValidator {
+        private static function getValidFileName($fileBaseName) {
             // [^....] anything that is not in this group of characters
-            return preg_replace('#[^a-z.0-9_-]#i', "-", $this->$imageFileBaseName);
+            return preg_replace('#[^a-z.0-9_-]#i', "-", $fileBaseName);
         }
 
-        static private function getFileExtension() {
-            $imageFileBaseName = $this->getValidFileName();
-            $ex_ext = explode('.', $fileName);
+        private static function getFileExtension($fileBaseName) {
+            $ex_ext = explode('.', $fileBaseName);
 
             return end($ex_ext);
         }
 
-        static private function getFileErrors() {
+        public static function validateFile($uploadedFileObject) {
+            $error = $uploadedFileObject['newImageFileObject']['error'];
+            $fileName = $uploadedFileObject['newImageFileObject']['name'];
+            $fileBaseName = basename($uploadedFileObject['newImageFileObject']['name']);
+            $filteredFileName = static::getValidFileName($fileBaseName);
+
             $errors = [];
             $validExtensionsArr = ['jpg','png'];
-            $extension = $this->getFileExtension();
 
-            if ($this->imageFile['error'] == 1) {
+            if ($error == 1) {
                 array_push($errors, 'LARGE FILE');
             }
 
-            if ($this->imageFile['error'] == 4) {
+            if ($error == 4) {
                 array_push($errors, 'NOT AN IMAGE TYPE FILE');
             }
 
-            if (file_exists('imagenes/pequenas/' . $imageFileBaseName)) {
+            if (file_exists('imagenes/pequenas/' . $fileBaseName)) {
                 array_push($errors, 'FILE ALREADY EXISTS');
             }
 
-            if (!in_array($extension, $validExtensionsArr)) {
+            if (!in_array(static::getFileExtension($filteredFileName), $validExtensionsArr)) {
                 array_push($errors, 'NOTA VALID FILE EXTENSION');
             }
 
-            return $errors;
-        }
-
-        static public function getFileNameSet() {
-            $fileErrors = $this->getFileErrors();
-
-            if (empty($fileErrors)) {
-                return [
-                    'imageFile' => $this->$imageFile,
-                    'tempPath' => $this->$tempPath,
-                    'imageFileBaseName' => $this->$imageFileBaseName,
-                    'fileErrors' => $fileErrors
-                ];
-            }
-
-            return ['fileErrors' => $fileErrors];
+            return [
+                'fileName' => $filteredFileName,
+                'error' => $errors
+            ];
         }
     }
 
     class UploadImageFile {
-        private static $existingFiles = [];
+        private $existingFiles = [];
 
         private const IMAGE_PATHS = [
             "imagenes/pequenas/",
@@ -89,8 +70,8 @@
             'iconos/photo.png'
         ];
 
-        static private function getExistingFiles() {
-            $arr = static::existingFiles;
+        private function getExistingFiles() {
+            $arr = static::$existingFiles;
 
             for ($i = 0; $i < 3; $i++) {
                 $file = static::IMAGE_PATHS[$i] . $fileName;
@@ -101,46 +82,43 @@
             return file_exists($file);
         }
 
-        static private function deleteExistingFiles() {
+        private function deleteExistingFiles() {
             for ($i = 0; $i < 3; $i++) {
                 unlink(static::IMAGE_PATHS[$i] . $fileName);
             }
         }
 
-        static public function isFileUploaded() {
-            $files = static::getExistingFiles();
-            $fileExists = !empty($files);
+        public function fileUpload($uploadedFileObject) {
+            $f = FileValidator::validateFile($uploadedFileObject);
 
-            if ($fileExists) {
-                echo 'FILE EXISTS <BR>';
-                // delete existing files;
+            if (empty($f['errors'])) {
+                $temp_path = $uploadedFileObject['newImageFileObject']['tmp_name'];
+                $target_path ='images/small/' . $f['fileName'];
+
+                $f['targetPath'] = $target_path;
+                $f['isFileUploaded'] = false;
+
+                echo 'UPLOADING FILE: ' . $f['fileName'] . '<BR>';
+
+                // 1. borrar archivos
+                // 2. subir nuevo
+                // $isFileUploaded = move_uploaded_file($temp_path, $destino);
+
+                return $f;
             }
-
-            echo 'UPLOADING FILE <BR>';
-            //return move_uploaded_file($temp_path, $destino);
         }
     }
 
-    class UpdateImageTable {
-        public static function getValue() {
-            return 'the value';
-        }
+    if (isset($_POST['submit-img-btn'])) {
+        $newFileUpload = new UploadImageFile();
 
-        private function updateTable() {
-            if (UploadImageFile::isFileUploaded()) {
-                $q_txt = "UPDATE textos_contenidos SET imagen1 = '{$ruta1}', imagen2 = '{$ruta2}', imagen3 = '{$ruta3}' WHERE texto_id = $id";
-                $u_txt = mysql_query($q_txt, $connection);
-            }
+        $newFileUpload->fileUpload($_FILES);
 
-        }
-
-        public static function isFileUploaded() {
-
-        }
+        // private function updateTable() {
+        //         $q_txt = "UPDATE textos_contenidos SET imagen1 = '{$ruta1}', imagen2 = '{$ruta2}', imagen3 = '{$ruta3}' WHERE texto_id = $id";
+        //         $u_txt = mysql_query($q_txt, $connection);
+        // }
     }
-
-    echo "hola";
-
     // crear nuevas los otros tamaños de las imégenes
 
 ?>

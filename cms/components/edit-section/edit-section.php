@@ -35,9 +35,13 @@
                     $data = [
                         'title' => $d['title'],
                         'contentId' => $d['id'],
-                        'contentImage' => Utils::getMainImage($d['contentImageSet']),
                         'position' => $d['position'],
-                        'contents' => ''
+                        'contents' => '',
+                        'contentImage' => [
+                            "image" => Utils::getMainImage($d['contentImageSet']),
+                            "contentId" => $d['id'],
+                            "contentType" =>"section"
+                        ]
                     ];
                 }
 
