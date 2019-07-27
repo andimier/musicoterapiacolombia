@@ -13,6 +13,10 @@
             }
         }
 
+        public static function getCurrentUrl() {
+            return $_SERVER['REQUEST_URI'];
+        }
+
         public static function mysql_prep($value){
             $magic_quotes_active = get_magic_quotes_gpc();
             $new_enough_php = function_exists("mysql_real_scape_string");

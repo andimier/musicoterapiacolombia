@@ -8,6 +8,7 @@
             <input type="hidden" name="contentId" value="<?php echo $mainImageDataArr['contentId']; ?>" />
             <input type="hidden" name="contentType" value="<?php echo $mainImageDataArr['contentType']; ?>" />
             <input type="hidden" name="image" value="<?php echo $mainImageDataArr['image']; ?>" />
+            <input type="hidden" name="currentUrl" value="<?php echo Utils::getCurrentUrl(); ?>" />
 
             <div id="fileUpload">
                 <input id="btn_foto" type="button" value="escoge una imagen" class="mascara">
