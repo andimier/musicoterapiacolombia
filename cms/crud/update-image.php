@@ -1,20 +1,10 @@
 <?php
-
-    // function redirect($tabla, $id, $subcontenido, $texto_id, $contenido){
-
-    //     if($tabla=='secciones'){
-    //         $redirect = 'Location: editar-seccion.php?seccion=' . $id;
-    //     }elseif($tabla=='contenidos'){
-    //         $redirect = 'Location: editar-contenido.php?contenido_id=' . $id;
-    //     }else{
-    //         $redirect = 'Location: editar-textos.php?sub-contenido='.$subcontenido.'&texto_id=' . $texto_id . '&contenido=' . $contenido;
-    //     }
-    //     return $redirect;
-    // }
-
     class FileValidator {
         public static function getValidFileName($fileBaseName) {
-            // [^....] anything that is not in this group of characters
+            /**
+             * [^....] anything that is not in this group of characters
+             */
+
             return preg_replace('#[^a-z.0-9_-]#i', "-", $fileBaseName);
         }
 
@@ -141,9 +131,9 @@
         if (is_bool($isFileUploaded) && $isFileUploaded == TRUE) {
             // crop;
             // private function updateTable() {
-        //         $q_txt = "UPDATE textos_contenidos SET imagen1 = '{$ruta1}', imagen2 = '{$ruta2}', imagen3 = '{$ruta3}' WHERE texto_id = $id";
-        //         $u_txt = mysql_query($q_txt, $connection);
-        // }
+            //  $q_txt = "UPDATE textos_contenidos SET imagen1 = '{$ruta1}', imagen2 = '{$ruta2}', imagen3 = '{$ruta3}' WHERE texto_id = $id";
+            //  $u_txt = mysql_query($q_txt, $connection);
+            // }
         }
 
         if (is_array($isFileUploaded)) {
