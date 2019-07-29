@@ -59,16 +59,16 @@
             $p = [];
             $src_x = 0;
             $src_y = 0;
+            $src_width = $width;
+            $src_height = $height;
 
             if ($width > $height) {
                 $src_x = ($width / 2) - ($height / 2);
                 $src_width = $height;
-                $src_height = $height;
             }
 
             if ($height > $width) {
                 $src_y = ($height / 2) - ($width / 2);
-                $src_width = $width;
                 $src_height = $width;
             }
 
