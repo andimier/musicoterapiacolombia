@@ -1,5 +1,5 @@
 <?php
-    class ImageCrop {
+    class ImageResizeSet {
         public static $srcImagePath = '';
         public static $imageProps = [];
         public static $squaredSizes = [300, 400, 500];
@@ -141,21 +141,13 @@
         public static function createNewImagesSet($srcImagePath) {
             self::setImageProps($srcImagePath);
 
-            if (self::$imageProps{'isSquaredImage'}) {
-                $props = [
-                    "src_x" => 0,
-                    "src_y" => 0,
-                    "src_width" => $width,
-                    "src_height" => $heigh
-                ];
+            $baseSquaredImage = static::createSquaredImagesSet();
 
-                static::createSquaredImagesSet();
-            } else {
-                // build squared image
-                $baseSquaredImage = static::createSquaredImagesSet();
+            if (!self::$imageProps{'isSquaredImage'}) {
+                // create rectangular images
             }
         }
     }
 
-    ImageCrop::createNewImagesSet('../images/small/img1.jpg');
+    ImageResizeSet::createNewImagesSet('../images/small/img1.jpg');
 ?>
