@@ -3,6 +3,8 @@
         public static $srcImagePath = '';
         public static $imageProps = [];
         public static $squaredSizes = [300, 400, 500];
+        public static $targetFolder = '../images/';
+        public static $imagesTypes = ['squared' => 'SQ', 'rectangular' => 'REC'];
 
         private static function createResourceFromPath() {
             return imagecreatefromjpeg(self::$imageProps['srcImagePath']);
@@ -83,7 +85,8 @@
                     "dst_x" => 0,
                     "dst_y" => 0,
                     "dst_width" => $sizes[$i],
-                    "dst_height" => $sizes[$i]
+                    "dst_height" => $sizes[$i],
+                    "type" => self::$imagesTypes['squared']
                 ]);
             }
 
@@ -99,9 +102,11 @@
         private static function getDestinationUrl($prop) {
             $e = explode('.', static::$imageProps['imageName']);
             $ext = end($e);
-            $folder = self::$imageProps['folder'];
+            $targetFolder = self::$imageProps['targetFolder'];
+            $sizes = "{$prop['dst_width']}_x_{$prop['dst_height']}";
+            $type = $prop['type'];
 
-            return "{$folder}{$e[0]}_{$prop['dst_width']}_x_{$prop['dst_height']}.{$ext}";
+            return "{$targetFolder}{$e[0]}_{$type}_{$sizes}.{$ext}";
         }
 
         private static function createSquaredImagesSet() {
@@ -119,7 +124,7 @@
             $p = getimagesize($srcImagePath);
 
             $props['srcImagePath'] = $srcImagePath;
-            $props['folder'] = '../images/';
+            $props['targetFolder'] = self::$targetFolder;
             $props['width'] = $p[0];
             $props['height'] = $p[1];
             $props['isSquaredImage'] = ($p[0] == $p[1]);
