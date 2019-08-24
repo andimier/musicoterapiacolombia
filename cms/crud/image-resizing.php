@@ -2,7 +2,7 @@
     class ImageResizeSet {
         public static $srcImagePath = '';
         public static $imageProps = [];
-        public static $squaredSizes = [300, 400, 500];
+        public static $squaredSizes = [200, 300, 400];
         public static $targetFolder = '../images/';
         public static $imagesTypes = ['squared' => 'SQ', 'rectangular' => 'REC'];
 
@@ -94,9 +94,31 @@
         }
 
         private static function getRectangularprops() {
-            $scale_ratio = $w_orig / $h_orig;
-            $w = 500;
-            $h = 500 / $scale_ratio;
+            $src_width = self::$imageProps['width'];
+            $src_height = self::$imageProps['height'];
+            $scale_ratio = $src_width / $src_height;
+            $sizes = self::$squaredSizes;
+            $p = [];
+
+            array_push($sizes, $src_width);
+
+            for ($i = 0; $i < count($sizes); $i++) {
+                $h = $sizes[$i] / $scale_ratio;
+
+                array_push($p, [
+                    'src_x' => 0,
+                    'src_y' => 0,
+                    'src_width' => $src_width,
+                    'src_height' => $src_height,
+                    "dst_x" => 0,
+                    "dst_y" => 0,
+                    "dst_width" => $sizes[$i],
+                    "dst_height" => $h,
+                    "type" => self::$imagesTypes['rectangular']
+                ]);
+            }
+
+            return $p;
         }
 
         private static function getDestinationUrl($prop) {
@@ -109,8 +131,12 @@
             return "{$targetFolder}{$e[0]}_{$type}_{$sizes}.{$ext}";
         }
 
-        private static function createSquaredImagesSet() {
-            $props = static::getSquaredImageProps();
+        private static function createImagesSet($formType) {
+            if ($formType == 'squared') {
+                $props = static::getSquaredImageProps();
+            } else {
+                $props = static::getRectangularprops();
+            }
 
             for ($i = 0; $i < count($props); $i++) {
                 $new_img_resource = static::createResampledImageCopy($props[$i]);
@@ -141,13 +167,14 @@
         public static function createNewImagesSet($srcImagePath) {
             self::setImageProps($srcImagePath);
 
-            $baseSquaredImage = static::createSquaredImagesSet();
+            static::createImagesSet('squared');
 
             if (!self::$imageProps{'isSquaredImage'}) {
+                static::createImagesSet('rectangular');
                 // create rectangular images
             }
         }
     }
 
-    ImageResizeSet::createNewImagesSet('../images/small/img1.jpg');
+    //ImageResizeSet::createNewImagesSet('../images/small/landscape.jpg');
 ?>

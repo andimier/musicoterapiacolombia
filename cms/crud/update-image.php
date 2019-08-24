@@ -1,5 +1,9 @@
 <?php
+    require_once('image-resizing.php');
+
     class FileValidator {
+        public $targetFolder = '../images/';
+
         public static function getValidFileName($fileBaseName) {
             /**
              * [^....] anything that is not in this group of characters
@@ -103,7 +107,8 @@
             $this->file['basename'] = basename($fileObject['newImageFileObject']['name']);
             $this->file['isFileUploaded'] = false;
             $this->file['validFileName'] = FileValidator::getValidFileName($this->file['basename']);
-            $this->file['targetPath'] = '../images/small/' . $this->file['validFileName'];
+            // $this->file['targetPath'] = '../images/small/' . $this->file['validFileName'];
+            $this->file['targetPath'] = $this->targetFolder . $this->file['validFileName'];
         }
 
         public function fileUpload($fileObject, $currentImageUrl) {
@@ -117,7 +122,9 @@
             if (!$hasErrors) {
                 if ($currentImage != 'photo.png') $this->deleteExistingFiles();
 
-                return $this->uploadFile();
+                $isFileUploaded = $this->uploadFile();
+
+                return $this;
             } else {
                 return $this->errors;
             }
@@ -130,6 +137,8 @@
 
         if (is_bool($isFileUploaded) && $isFileUploaded == TRUE) {
             // crop;
+            //ImageResizeSet::createNewImagesSet('../images/small/landscape.jpg');
+
             // private function updateTable() {
             //  $q_txt = "UPDATE textos_contenidos SET imagen1 = '{$ruta1}', imagen2 = '{$ruta2}', imagen3 = '{$ruta3}' WHERE texto_id = $id";
             //  $u_txt = mysql_query($q_txt, $connection);
