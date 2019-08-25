@@ -2,8 +2,6 @@
     require_once('image-resizing.php');
 
     class FileValidator {
-        public $targetFolder = '../images/';
-
         public static function getValidFileName($fileBaseName) {
             /**
              * [^....] anything that is not in this group of characters
@@ -56,18 +54,18 @@
     }
 
     class UploadImageFile {
+        public $file = [];
+        public $isFileUploaded = false;
+        private const TARGET_FOLDER = '../images/';
         private const IMAGE_PATHS = [
             "imagenes/pequenas/",
             "imagenes/medianas/",
             "imagenes/grandes/"
         ];
-
         private const ALLOWED_PLACEHOLDERS = [
             'photo.png',
             'iconos/photo.png'
         ];
-
-        private $file = [];
 
         private function getExistingFiles() {
             $arr = [];
@@ -107,8 +105,7 @@
             $this->file['basename'] = basename($fileObject['newImageFileObject']['name']);
             $this->file['isFileUploaded'] = false;
             $this->file['validFileName'] = FileValidator::getValidFileName($this->file['basename']);
-            // $this->file['targetPath'] = '../images/small/' . $this->file['validFileName'];
-            $this->file['targetPath'] = $this->targetFolder . $this->file['validFileName'];
+            $this->file['targetPath'] = static::TARGET_FOLDER . $this->file['validFileName'];
         }
 
         public function fileUpload($fileObject, $currentImageUrl) {
@@ -120,39 +117,38 @@
             $currentImage = end($imagePathArr);
 
             if (!$hasErrors) {
+                // *** POR VALIDAR
                 if ($currentImage != 'photo.png') $this->deleteExistingFiles();
 
-                $isFileUploaded = $this->uploadFile();
-
-                return $this;
-            } else {
-                return $this->errors;
+                $this->isFileUploaded = $this->uploadFile();
             }
+
+            return $this;
         }
     }
 
     if (isset($_POST['submit-img-btn'])) {
         $newFileUpload = new UploadImageFile();
-        $isFileUploaded = $newFileUpload->fileUpload($_FILES, $_POST['image']);
+        $file = $newFileUpload->fileUpload($_FILES, $_POST['image']);
+        $fileVars = get_object_vars($file);
 
-        if (is_bool($isFileUploaded) && $isFileUploaded == TRUE) {
-            // crop;
-            //ImageResizeSet::createNewImagesSet('../images/small/landscape.jpg');
-
-            // private function updateTable() {
-            //  $q_txt = "UPDATE textos_contenidos SET imagen1 = '{$ruta1}', imagen2 = '{$ruta2}', imagen3 = '{$ruta3}' WHERE texto_id = $id";
-            //  $u_txt = mysql_query($q_txt, $connection);
-            // }
-        }
-
-        if (is_array($isFileUploaded)) {
-            $url = FileValidator::getLocationErrorsUrl($isFileUploaded);
+        if ($fileVars['isFileUploaded'] == FALSE) {
+            $url = FileValidator::getLocationErrorsUrl($fileVars['errors']);
 
             header('Location: ' . $url);
+
+            return;
         }
 
+        // Image Resize;
+        ImageResizeSet::createNewImagesSet($fileVars['file']['targetPath']);
 
+        // private function updateTable() {
+        //  $q_txt = "UPDATE textos_contenidos SET imagen1 = '{$ruta1}', imagen2 = '{$ruta2}', imagen3 = '{$ruta3}' WHERE texto_id = $id";
+        //  $u_txt = mysql_query($q_txt, $connection);
+        // }
+
+        // return to page
     }
-    // crear nuevas los otros tamaños de las imégenes
 
 ?>
