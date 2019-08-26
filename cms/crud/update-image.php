@@ -113,7 +113,12 @@
             $url = $newFileUpload->getLocation($currentUrl, $fileVars['errors']);
         } else {
             // Image Resize;
-            // ImageResizeSet::createNewImagesSet($fileVars['file']['targetPath']);
+            $newImagesSet = ImageResizeSet::createNewImagesSet(
+                $fileVars['file']['targetPath'],
+                [200, 300, 400]
+            );
+
+            $newImagesSetStr = implode(',', $newImagesSet);
 
             // private function updateTable() {
             // $q_txt = "UPDATE textos_contenidos SET imagen1 = '{$ruta1}', imagen2 = '{$ruta2}', imagen3 = '{$ruta3}' WHERE texto_id = $id";

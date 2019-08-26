@@ -2,7 +2,8 @@
     class ImageResizeSet {
         public static $srcImagePath = '';
         public static $imageProps = [];
-        public static $squaredSizes = [200, 300, 400];
+        public static $imageSizes = '';
+        public static $newImagesSet = [];
         public static $targetFolder = '../images/';
         public static $imagesTypes = ['squared' => 'SQ', 'rectangular' => 'REC'];
 
@@ -56,7 +57,7 @@
         private static function getSquaredImageProps() {
             $width = self::$imageProps['width'];
             $height = self::$imageProps['height'];
-            $sizes = self::$squaredSizes;
+            $sizes = self::$imageSizes;
 
             $p = [];
             $src_x = 0;
@@ -97,7 +98,7 @@
             $src_width = self::$imageProps['width'];
             $src_height = self::$imageProps['height'];
             $scale_ratio = $src_width / $src_height;
-            $sizes = self::$squaredSizes;
+            $sizes = self::$imageSizes;
             $p = [];
 
             array_push($sizes, $src_width);
@@ -142,6 +143,8 @@
                 $new_img_resource = static::createResampledImageCopy($props[$i]);
                 $destination = self::getDestinationUrl($props[$i]);
 
+                array_push(self::$newImagesSet, $destination);
+
                 imagejpeg($new_img_resource, $destination, 100);
             }
         }
@@ -164,7 +167,8 @@
             self::$imageProps = $props;
         }
 
-        public static function createNewImagesSet($srcImagePath) {
+        public static function createNewImagesSet($srcImagePath, $imageSizes) {
+            self::$imageSizes = $imageSizes;
             self::setImageProps($srcImagePath);
 
             static::createImagesSet('squared');
@@ -173,8 +177,8 @@
                 static::createImagesSet('rectangular');
                 // create rectangular images
             }
+
+            return self::$newImagesSet;
         }
     }
-
-    //ImageResizeSet::createNewImagesSet('../images/small/landscape.jpg');
 ?>
