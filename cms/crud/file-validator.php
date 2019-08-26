@@ -14,14 +14,6 @@
             return end($ex_ext);
         }
 
-        public static function getLocationErrorsUrl($errors) {
-            $pathArr = explode('cms/', $_POST['currentUrl']);
-            $location = end($pathArr);
-            $errorsStr = implode('-', $errors);
-
-            return '../' . $location . '&errors=' . urlencode($errorsStr);
-        }
-
         public static function validateFile($file) {
             $errors = [];
             $extension = static::getFileExtension($file['validFileName']);

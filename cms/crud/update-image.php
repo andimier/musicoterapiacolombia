@@ -76,26 +76,40 @@
         }
     }
 
+    function getLocation($currentUrl, $errors) {
+        $pathArr = explode('cms/', $currentUrl);
+        $location = end($pathArr);
+
+        if (!empty($errors)) {
+            $errorsStr = implode('-', $errors);
+
+            return '../' . $location . '&errors=' . urlencode($errorsStr);
+        } else {
+            return '../' . $location . '&fileUpload=successful';
+        }
+    }
+
     if (isset($_POST['submit-img-btn'])) {
         $newFileUpload = new UploadImageFile();
         $file = $newFileUpload->fileUpload($_FILES, $_POST['image']);
         $fileVars = get_object_vars($file);
+        $currentUrl = $_POST['currentUrl'];
 
         if ($fileVars['isFileUploaded'] == FALSE) {
-            $url = FileValidator::getLocationErrorsUrl($fileVars['errors']);
+            $url = getLocation($currentUrl, $fileVars['errors']);
+        } else {
+            // Image Resize;
+            //ImageResizeSet::createNewImagesSet($fileVars['file']['targetPath']);
 
-            header('Location: ' . $url);
+            // private function updateTable() {
+            //  $q_txt = "UPDATE textos_contenidos SET imagen1 = '{$ruta1}', imagen2 = '{$ruta2}', imagen3 = '{$ruta3}' WHERE texto_id = $id";
+            //  $u_txt = mysql_query($q_txt, $connection);
+            // }
 
-            return;
+            $url = getLocation($currentUrl, []);
         }
 
-        // Image Resize;
-        ImageResizeSet::createNewImagesSet($fileVars['file']['targetPath']);
-
-        // private function updateTable() {
-        //  $q_txt = "UPDATE textos_contenidos SET imagen1 = '{$ruta1}', imagen2 = '{$ruta2}', imagen3 = '{$ruta3}' WHERE texto_id = $id";
-        //  $u_txt = mysql_query($q_txt, $connection);
-        // }
+        header('Location: ' . $url);
 
         // return to page
     }
