@@ -75,8 +75,20 @@
             return $this;
         }
 
+        public function updateUrl($currentUrl) {
+            if (strpos($currentUrl, 'fileUpload') != FALSE) {
+                $x = explode('?', $currentUrl);
+                $y = preg_replace('/&fileUpload=[a-zA-Z]+/', '', end($x));
+
+                return "{$x[0]}?{$y}";
+            }
+
+            return $currentUrl;
+        }
+
         public function getLocation($currentUrl, $errors) {
-            $pathArr = explode('cms/', $currentUrl);
+            $url = $this->updateUrl($currentUrl);
+            $pathArr = explode('cms/', $url);
             $location = end($pathArr);
 
             if (!empty($errors)) {
@@ -99,12 +111,12 @@
             $url = $newFileUpload->getLocation($currentUrl, $fileVars['errors']);
         } else {
             // Image Resize;
-            ImageResizeSet::createNewImagesSet($fileVars['file']['targetPath']);
+            // ImageResizeSet::createNewImagesSet($fileVars['file']['targetPath']);
 
             // private function updateTable() {
-            //  $q_txt = "UPDATE textos_contenidos SET imagen1 = '{$ruta1}', imagen2 = '{$ruta2}', imagen3 = '{$ruta3}' WHERE texto_id = $id";
-            //  $u_txt = mysql_query($q_txt, $connection);
-            // }
+            // $q_txt = "UPDATE textos_contenidos SET imagen1 = '{$ruta1}', imagen2 = '{$ruta2}', imagen3 = '{$ruta3}' WHERE texto_id = $id";
+            // $u_txt = mysql_query($q_txt, $connection);
+
 
             $url = $newFileUpload->getLocation($currentUrl, []);
         }
