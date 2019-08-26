@@ -76,10 +76,11 @@
         }
 
         public function updateUrl($currentUrl) {
-            // TO DO -> FIND ERRORS AND REMOVE THEM FROM THE URL
-            if (strpos($currentUrl, 'fileUpload') != FALSE) {
+            preg_match('/fileUpload|errors/', $currentUrl, $matches, PREG_OFFSET_CAPTURE);
+
+            if (!empty($matches)) {
                 $x = explode('?', $currentUrl);
-                $y = preg_replace('/&fileUpload=[a-zA-Z]+/', '', end($x));
+                $y = preg_replace('/(&fileUpload|&errors)=.+/', '', end($x));
 
                 return "{$x[0]}?{$y}";
             }
