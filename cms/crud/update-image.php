@@ -74,18 +74,18 @@
 
             return $this;
         }
-    }
 
-    function getLocation($currentUrl, $errors) {
-        $pathArr = explode('cms/', $currentUrl);
-        $location = end($pathArr);
+        public function getLocation($currentUrl, $errors) {
+            $pathArr = explode('cms/', $currentUrl);
+            $location = end($pathArr);
 
-        if (!empty($errors)) {
-            $errorsStr = implode('-', $errors);
+            if (!empty($errors)) {
+                $errorsStr = implode('-', $errors);
 
-            return '../' . $location . '&errors=' . urlencode($errorsStr);
-        } else {
-            return '../' . $location . '&fileUpload=successful';
+                return '../' . $location . '&errors=' . urlencode($errorsStr);
+            } else {
+                return '../' . $location . '&fileUpload=successful';
+            }
         }
     }
 
@@ -96,17 +96,17 @@
         $currentUrl = $_POST['currentUrl'];
 
         if ($fileVars['isFileUploaded'] == FALSE) {
-            $url = getLocation($currentUrl, $fileVars['errors']);
+            $url = $newFileUpload->getLocation($currentUrl, $fileVars['errors']);
         } else {
             // Image Resize;
-            //ImageResizeSet::createNewImagesSet($fileVars['file']['targetPath']);
+            ImageResizeSet::createNewImagesSet($fileVars['file']['targetPath']);
 
             // private function updateTable() {
             //  $q_txt = "UPDATE textos_contenidos SET imagen1 = '{$ruta1}', imagen2 = '{$ruta2}', imagen3 = '{$ruta3}' WHERE texto_id = $id";
             //  $u_txt = mysql_query($q_txt, $connection);
             // }
 
-            $url = getLocation($currentUrl, []);
+            $url = $newFileUpload->getLocation($currentUrl, []);
         }
 
         header('Location: ' . $url);
