@@ -1,6 +1,9 @@
 <?php
+    require_once("../required/session.php");
     require_once('image-resizing.php');
     require_once('file-validator.php');
+    require_once('table-update.php');
+    require_once('../required/utils.php');
 
     class UploadImageFile {
         public $file = [];
@@ -101,11 +104,26 @@
                 return '../' . $location . '&fileUpload=successful';
             }
         }
+
+        public function createImagesSet($targetPath) {
+            $imageSizes = [200, 300, 400];
+
+            return ImageResizeSet::createNewImagesSet($targetPath, $imageSizes);
+        }
+
+        public function updateTable($post, $newImagesSet) {
+            $newImagesSetStr = implode(',', $newImagesSet);
+            $content = "contentImageSet = '{$newImagesSetStr}'";
+            $table = Utils::getContentType($post['contentType']);
+
+            TableUpdate::updateTable($table, $post['contentId'], $content);
+        }
     }
 
     if (isset($_POST['submit-img-btn'])) {
         $newFileUpload = new UploadImageFile();
         $file = $newFileUpload->fileUpload($_FILES, $_POST['image']);
+
         $fileVars = get_object_vars($file);
         $currentUrl = $_POST['currentUrl'];
 
@@ -113,24 +131,13 @@
             $url = $newFileUpload->getLocation($currentUrl, $fileVars['errors']);
         } else {
             // Image Resize;
-            $newImagesSet = ImageResizeSet::createNewImagesSet(
-                $fileVars['file']['targetPath'],
-                [200, 300, 400]
-            );
-
-            $newImagesSetStr = implode(',', $newImagesSet);
-
-            // private function updateTable() {
-            // $q_txt = "UPDATE textos_contenidos SET imagen1 = '{$ruta1}', imagen2 = '{$ruta2}', imagen3 = '{$ruta3}' WHERE texto_id = $id";
-            // $u_txt = mysql_query($q_txt, $connection);
-
+            $newImagesSet = $newFileUpload->createImagesSet($fileVars['file']['targetPath']);
+            $newFileUpload->updateTable($_POST, $newImagesSet);
 
             $url = $newFileUpload->getLocation($currentUrl, []);
         }
 
         header('Location: ' . $url);
-
-        // return to page
     }
 
 ?>

@@ -6,6 +6,14 @@
             'text'
         ];
 
+        public static function getContentType($type) {
+            return [
+                "section" => "sections",
+                "content" => "contents",
+                "text" => "texts"
+            ][$type];
+        }
+
         function redirect_to($location = NULL) {
             if ($location != NULL) {
                 header("Location: {$location}");
