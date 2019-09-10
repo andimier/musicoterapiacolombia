@@ -36,6 +36,7 @@
                         'title' => $d['title'],
                         'contentId' => $d['id'],
                         'position' => $d['position'],
+                        'table' => 'sections',
                         'contents' => '',
                         'contentImage' => [
                             "image" => Utils::getMainImage($d['contentImageSet']),

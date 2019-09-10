@@ -11,12 +11,18 @@
     <section>
         <?php
             $mainImageDataArr = $data['contentImage'];
+
             require_once('components/main-image/main-image.php');
             ?>
     </section>
 
     <section id="insert-section">
         <?php
+            $table = $data['table'];
+            $sectionId = $data['contentId'];
+            $contentId = '';
+            $contentType = 'section';
+
             require_once('components/create-content-form/create-content-form-html.php');
         ?>
     </section>

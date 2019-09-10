@@ -42,19 +42,18 @@ contentItems: [
         id:
         sectionID:
         parentItemID:
-        subContentType:
+        contentType:
         galleryID:
         isSubContent: Boolean,
-        contentDesignType: String,
+        contentDesignType: String[olist, uList, text],
         visible: Boolean,
-        type:
         fecha:
         title:
         subTitulo:
-        contentImageSet: [],
-        subContentsTypes: [],
-        textos: [],
-        items: []
+        contentImageSet: String[],
+        // subContentsTypes: [],
+        // textos: [],
+        // items: []
     }
 ]
 
