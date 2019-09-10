@@ -30,9 +30,10 @@ Sections
 
 sections: [
     {
-        id: String,
-        title: String,
-        position: Int
+        id: int 11,
+        title: varchar 255,
+        position: Int 11,
+        contentImageSet: text
     }
 ]
 
@@ -56,3 +57,10 @@ contentItems: [
         items: []
     }
 ]
+
+
+Etapas / entregas
+1. Edicion de contenidos y textos
+2. Edicion de secciones
+3. Inserción y borrado de Secciones - CMS y Front.
+4. Cambio funcionalidad edicion de textos
