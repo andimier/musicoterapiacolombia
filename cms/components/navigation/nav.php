@@ -1,6 +1,6 @@
 <?php
     class Nav {
-        private function getSections() {
+        static private function getSections() {
             global $connection;
             global $pFunctions;
 

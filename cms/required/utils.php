@@ -6,11 +6,23 @@
             'text'
         ];
 
+        public static function getContentType($type) {
+            return [
+                "section" => "sections",
+                "content" => "contents",
+                "text" => "texts"
+            ][$type];
+        }
+
         function redirect_to($location = NULL) {
             if ($location != NULL) {
                 header("Location: {$location}");
                 exit;
             }
+        }
+
+        public static function getCurrentUrl() {
+            return $_SERVER['REQUEST_URI'];
         }
 
         public static function mysql_prep($value){
@@ -38,20 +50,22 @@
         }
 
         public static function getEditingComponent() {
-            $editType = isset($_GET['contentType']) ? $_GET['contentType'] : 'content';
-
             /*
                 sections
                 content
                 text
             */
+            $page = 'components/welcome-page/welcome-page-html.php';
 
-            if (isset($editType)) {
+            if (isset($_GET['contentType'])) {
+                $editType = $_GET['contentType'];
                 $parentFolder = 'components/edit-' . $editType;
                 $file = '/edit-' . $editType . '.php';
 
-                return  $parentFolder . $file;
+                $page = $parentFolder . $file;
             }
+
+            return $page;
         }
 
         public static function getMainImage($imageSet) {

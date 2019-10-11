@@ -1,124 +1,143 @@
 <?php
-
-    // function redirect($tabla, $id, $subcontenido, $texto_id, $contenido){
-
-    //     if($tabla=='secciones'){
-    //         $redirect = 'Location: editar-seccion.php?seccion=' . $id;
-    //     }elseif($tabla=='contenidos'){
-    //         $redirect = 'Location: editar-contenido.php?contenido_id=' . $id;
-    //     }else{
-    //         $redirect = 'Location: editar-textos.php?sub-contenido='.$subcontenido.'&texto_id=' . $texto_id . '&contenido=' . $contenido;
-    //     }
-    //     return $redirect;
-    // }
-
-    class FileValidator {
-        private static function getValidFileName($fileBaseName) {
-            // [^....] anything that is not in this group of characters
-            return preg_replace('#[^a-z.0-9_-]#i', "-", $fileBaseName);
-        }
-
-        private static function getFileExtension($fileBaseName) {
-            $ex_ext = explode('.', $fileBaseName);
-
-            return end($ex_ext);
-        }
-
-        public static function validateFile($uploadedFileObject) {
-            $error = $uploadedFileObject['newImageFileObject']['error'];
-            $fileName = $uploadedFileObject['newImageFileObject']['name'];
-            $fileBaseName = basename($uploadedFileObject['newImageFileObject']['name']);
-            $filteredFileName = static::getValidFileName($fileBaseName);
-
-            $errors = [];
-            $validExtensionsArr = ['jpg','png'];
-
-            if ($error == 1) {
-                array_push($errors, 'LARGE FILE');
-            }
-
-            if ($error == 4) {
-                array_push($errors, 'NOT AN IMAGE TYPE FILE');
-            }
-
-            if (file_exists('imagenes/pequenas/' . $fileBaseName)) {
-                array_push($errors, 'FILE ALREADY EXISTS');
-            }
-
-            if (!in_array(static::getFileExtension($filteredFileName), $validExtensionsArr)) {
-                array_push($errors, 'NOTA VALID FILE EXTENSION');
-            }
-
-            return [
-                'fileName' => $filteredFileName,
-                'error' => $errors
-            ];
-        }
-    }
+    require_once("../required/session.php");
+    require_once('image-resizing.php');
+    require_once('file-validator.php');
+    require_once('table-update.php');
+    require_once('../required/utils.php');
 
     class UploadImageFile {
-        private $existingFiles = [];
-
+        public $file = [];
+        public $isFileUploaded = false;
+        private const TARGET_FOLDER = '../images/';
         private const IMAGE_PATHS = [
             "imagenes/pequenas/",
             "imagenes/medianas/",
             "imagenes/grandes/"
         ];
-
         private const ALLOWED_PLACEHOLDERS = [
             'photo.png',
             'iconos/photo.png'
         ];
 
         private function getExistingFiles() {
-            $arr = static::$existingFiles;
+            $arr = [];
 
-            for ($i = 0; $i < 3; $i++) {
-                $file = static::IMAGE_PATHS[$i] . $fileName;
+            for ($i = 0; $i < count($this->IMAGE_PATHS); $i++) {
+                $file = $this->IMAGE_PATHS[$i] . $this->file['validFileName'];
 
                 array_push($arr, $file);
             }
 
-            return file_exists($file);
+            return $arr;
         }
 
         private function deleteExistingFiles() {
-            for ($i = 0; $i < 3; $i++) {
-                unlink(static::IMAGE_PATHS[$i] . $fileName);
+            $files = $this->getExistingFiles();
+
+            for ($i = 0; $i < count($files); $i++) {
+                unlink(static::IMAGE_PATHS[$i] . $files[$i]);
             }
         }
 
-        public function fileUpload($uploadedFileObject) {
-            $f = FileValidator::validateFile($uploadedFileObject);
+        private function uploadFile() {
+            $tempPath = $this->file['temp_path'];
+            $targetPath = $this->file['targetPath'];
 
-            if (empty($f['errors'])) {
-                $temp_path = $uploadedFileObject['newImageFileObject']['tmp_name'];
-                $target_path ='images/small/' . $f['fileName'];
-
-                $f['targetPath'] = $target_path;
-                $f['isFileUploaded'] = false;
-
-                echo 'UPLOADING FILE: ' . $f['fileName'] . '<BR>';
-
-                // 1. borrar archivos
-                // 2. subir nuevo
-                // $isFileUploaded = move_uploaded_file($temp_path, $destino);
-
-                return $f;
+            try {
+                return move_uploaded_file($tempPath, $targetPath);
+            } catch (Exception $e) {
+                echo 'Excepción capturada: ' . $e;
             }
+        }
+
+        private function buildFileObject($fileObject) {
+            $this->file['temp_path'] = $fileObject['newImageFileObject']['tmp_name'];
+            $this->file['error'] = $fileObject['newImageFileObject']['error'];
+            $this->file['name'] = $fileObject['newImageFileObject']['name'];
+            $this->file['basename'] = basename($fileObject['newImageFileObject']['name']);
+            $this->file['isFileUploaded'] = false;
+            $this->file['validFileName'] = FileValidator::getValidFileName($this->file['basename']);
+            $this->file['targetPath'] = static::TARGET_FOLDER . $this->file['validFileName'];
+        }
+
+        public function fileUpload($fileObject, $currentImageUrl) {
+            $this->buildFileObject($fileObject);
+            $this->errors = FileValidator::validateFile($this->file);
+
+            $hasErrors = !empty($this->errors);
+            $imagePathArr = explode('/', $currentImageUrl);
+            $currentImage = end($imagePathArr);
+
+            if (!$hasErrors) {
+                // *** POR VALIDAR
+                if ($currentImage != 'photo.png') $this->deleteExistingFiles();
+
+                $this->isFileUploaded = $this->uploadFile();
+            }
+
+            return $this;
+        }
+
+        public function updateUrl($currentUrl) {
+            preg_match('/fileUpload|errors/', $currentUrl, $matches, PREG_OFFSET_CAPTURE);
+
+            if (!empty($matches)) {
+                $x = explode('?', $currentUrl);
+                $y = preg_replace('/(&fileUpload|&errors)=.+/', '', end($x));
+
+                return "{$x[0]}?{$y}";
+            }
+
+            return $currentUrl;
+        }
+
+        public function getLocation($currentUrl, $errors) {
+            $url = $this->updateUrl($currentUrl);
+            $pathArr = explode('cms/', $url);
+            $location = end($pathArr);
+
+            if (!empty($errors)) {
+                $errorsStr = implode('-', $errors);
+
+                return '../' . $location . '&errors=' . urlencode($errorsStr);
+            } else {
+                return '../' . $location . '&fileUpload=successful';
+            }
+        }
+
+        public function createImagesSet($targetPath) {
+            $imageSizes = [200, 300, 400];
+
+            return ImageResizeSet::createNewImagesSet($targetPath, $imageSizes);
+        }
+
+        public function updateTable($post, $newImagesSet) {
+            $newImagesSetStr = implode(',', $newImagesSet);
+            $content = "contentImageSet = '{$newImagesSetStr}'";
+            $table = Utils::getContentType($post['contentType']);
+
+            TableUpdate::updateTable($table, $post['contentId'], $content);
         }
     }
 
     if (isset($_POST['submit-img-btn'])) {
         $newFileUpload = new UploadImageFile();
+        $file = $newFileUpload->fileUpload($_FILES, $_POST['image']);
 
-        $newFileUpload->fileUpload($_FILES);
+        $fileVars = get_object_vars($file);
+        $currentUrl = $_POST['currentUrl'];
 
-        // private function updateTable() {
-        //         $q_txt = "UPDATE textos_contenidos SET imagen1 = '{$ruta1}', imagen2 = '{$ruta2}', imagen3 = '{$ruta3}' WHERE texto_id = $id";
-        //         $u_txt = mysql_query($q_txt, $connection);
-        // }
+        if ($fileVars['isFileUploaded'] == FALSE) {
+            $url = $newFileUpload->getLocation($currentUrl, $fileVars['errors']);
+        } else {
+            // Image Resize;
+            $newImagesSet = $newFileUpload->createImagesSet($fileVars['file']['targetPath']);
+            $newFileUpload->updateTable($_POST, $newImagesSet);
+
+            $url = $newFileUpload->getLocation($currentUrl, []);
+        }
+
+        header('Location: ' . $url);
     }
-    // crear nuevas los otros tamaños de las imégenes
 
 ?>
