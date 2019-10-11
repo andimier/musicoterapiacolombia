@@ -11,6 +11,6 @@
 	$db_select = mysqli_select_db($connection, "musicote_base");
 
 	if (!$db_select){
-		die("La Seleccion de la base de datos fallo: " . mysql_error());
+		die("La Seleccion de la base de datos fallo: " . mysqli_error($connection));
 	}
 ?>
