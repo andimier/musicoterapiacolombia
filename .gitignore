@@ -1,0 +1,12 @@
+# UI Package Managers #
+#######################
+node_modules
+package-lock.json
+
+# IDE - VSCode #
+#######################
+.vscode/*
+
+# Bash Tasks #
+#######################
+*.sh

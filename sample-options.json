@@ -1,0 +1,23 @@
+{
+    "parentTaskName": "bundle",
+    "concat": {
+        "active": true,
+        "config": {}
+    },
+    "uglify": {
+        "active": false,
+        "config": {}
+    },
+    "sourcemap": {
+        "active": true,
+        "config": {}
+    },
+    "destinationFolder": "./cms/css/",
+    "newLine": ";",
+    "files": {
+        "main-file.css": [
+        "./cms/css/login.css",
+        "./cms/css/shared.css"
+        ]
+    }
+}

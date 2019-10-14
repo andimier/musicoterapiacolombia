@@ -1,0 +1,32 @@
+{
+  "name": "musicoterapia",
+  "version": "1.0.0",
+  "description": "Musicoterapia Colombia",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andimier/musicoterapiacolombia.git"
+  },
+  "author": "Andrés Montaña",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andimier/musicoterapiacolombia/issues"
+  },
+  "homepage": "https://github.com/andimier/musicoterapiacolombia#readme",
+  "devDependencies": {
+    "browser-sync": "^2.26.7",
+    "gulp": "^4.0.2",
+    "gulp-bundle-files": "^1.9.8",
+    "gulp-concat": "^2.6.1",
+    "gulp-concat-css": "^3.1.0",
+    "gulp-remove-files": "0.0.3",
+    "gulp-sass": "^4.0.2",
+    "gulp-useref": "^4.0.0"
+  }
+}

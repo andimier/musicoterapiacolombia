@@ -7,7 +7,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>ANDIMIER : ENTRADA ADMIN.CONTENIDOS</title>
-	<link rel="Stylesheet" type="text/css" href="estilos/estilos.css" />
+	<link rel="Stylesheet" type="text/css" href="css/main.css" />
 </head>
 
 <body>
