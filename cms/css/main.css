@@ -1,14 +1,55 @@
+* {
+  border: none;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Courier New", 'Arial', 'sans-serif';
+  font-size: 14px; }
+
 body {
-  background-color: tomato;
-}
+  background-color: none; }
 
-.login {
-  background: red;
-}
+button,
+input[type=text],
+input[type=password] {
+  padding: 15px 30px; }
 
-.login input {
-  font-size: 14px;
-}
-.form {
-  background-color: black;
-}
+header {
+  background-color: #000;
+  background-image: url("../resources/header-logo.jpg");
+  background-repeat: no-repeat;
+  height: 50px;
+  width: 100%; }
+
+.button {
+  background-color: #3cf971;
+  color: white;
+  cursor: pointer;
+  padding: 15px 30px; }
+
+.button:hover {
+  background-color: #1cd651; }
+
+.login-container {
+  padding-top: 100px; }
+  .login-container .login {
+    background-color: #CCC;
+    color: white;
+    margin: auto;
+    width: 600px;
+    padding: 40px 60px 56px; }
+    .login-container .login form > * {
+      margin: auto;
+      display: block;
+      width: 100%;
+      padding: 15px 30px; }
+    .login-container .login form label {
+      padding: 15px 0; }
+    .login-container .login form .button {
+      margin-top: 30px;
+      width: 100%; }
+    .login-container .login form .login-message {
+      background-color: red;
+      border: 1px solid white;
+      margin-top: 40px;
+      padding: 30px; }

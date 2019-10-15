@@ -1,0 +1,36 @@
+.login-container {
+    padding-top: 100px;
+
+    .login {
+        background-color: $grey;
+        color: white;
+        margin: auto;
+        width: 600px;
+        padding: 40px 60px 56px;
+
+        form {
+            & > * {
+                margin: auto;
+                display: block;
+                width: 100%;
+                padding: 15px 30px;
+            }
+
+            label {
+                padding: 15px 0;
+            }
+
+            .button {
+                margin-top: 30px;
+                width: 100%;
+            }
+
+            .login-message {
+                background-color: $red;
+                border: 1px solid $white;
+                margin-top: 40px;
+                padding: 30px;
+            }
+        }
+    }
+}
