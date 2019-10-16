@@ -22,6 +22,8 @@
     </section>
 
 	<nav class="navigation">
+        <h2>Secciones</h2>
+
         <?php $navItems = Nav::getItemsData(); ?>
         <?php if ($navItems): ?>
             <ol class="nav-items-container">
