@@ -1,11 +1,11 @@
 .navigation-container {
-	background-color: $darker-grey;
+    background-color: $darker-grey;
     color: $dark-grey;
     font-family: $main-font;
     grid-column: 1 / 2;
-	height: calc(100vh - 50px);
-	padding: 60px 25px 25px;
-	top: 50px;
+    height: calc(100vh - 50px);
+    padding: 60px 25px 25px;
+    top: 50px;
     width: auto;
 
     .logout-btn {
