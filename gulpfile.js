@@ -22,8 +22,7 @@ function watch() {
     });
 
     gulp.watch(sourceCSSFiles, styles);
-    gulp.watch('./cms/*.php').on('change', browserSync.reload);
-    gulp.watch('./cms/components/**/*.php').on('change', browserSync.reload);
+    gulp.watch('./cms/**/*.php').on('change', browserSync.reload);
 };
 
 exports.watch = watch;

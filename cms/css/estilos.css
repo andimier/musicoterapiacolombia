@@ -6,33 +6,8 @@
 	padding: 0;
 }
 
-#cabezote   {
-	position:fixed;
-	width:100%;
-	height:50px;
-	top:0;
-	left:0;
-	margin-bottom:60px;
-	background-color:#000;
-	background-image:url('../resources/header-logo.jpg');
-	background-repeat:no-repeat;
-	font-size:25px;
-	color:#fff;
-	opacity: .1;
-}
 
-/*  NAVEGACION  */
-#info-bar  {
-	position:fixed;
-	width:280px;
-	top:50px;
-	left:0;
-	height:100%;
-	padding:60px 0 25px 25px;
-	background-color:#333;
-	font-family: "Courier New", Courier, monospace;
-	opacity: 1;
-}
+
 
 #btn_atras{
 	width:100px;
@@ -65,71 +40,15 @@
 	background-color:#33ffff
 }
 
-#info-bar .navigation{
-	font-size:15px;
-	text-transform:capitalize;
-}
-
-#info-bar .navigation a {
-	color:#999;
-	text-decoration:none;
-}
-#info-bar .navigation a:hover {
-	color:#fff;
-}
-
 #info-bar .secciones1 {
 	padding:5px 0 5px 0;
 }
 
-#nav_fecha {
-	width:90%;
-	font-size:13px;
-	text-align:center;
-	color:#999
-}
 
-#domain {
-	width:90%;
-	padding:10px 0 10px 0;
-	font-family: "Courier New", Courier, monospace;
-	font-size:14px;
-	color:#0Cf;
-	text-align:center;
-}
 
-#user {
-	width:90%;
-	padding:10px 0 10px 0;
-	background-color:#0Cf;
-	text-align:center;
-	font-size:13px;
-	color:#fff;
-	overflow:hidden;
-}
 
-div.etiquetalogout {
-	width:90%;
-	background:#666;
-	padding:10px 0 10px 0;
 
-	color: #fff;
-	font-family: "Courier New", Courier, monospace;
-	font-size: 12px;
-	font-style: normal;
 
-	text-align:center;
-}
-
-div.etiquetalogout a {
-	color: #fff;
-	text-decoration:none;
-}
-
-div.etiquetalogout a:hover {
-	color: #333;
-	text-decoration:none;
-}
 
 #col2  {
 	color:#333333;
@@ -159,9 +78,6 @@ div.etiquetalogout a:hover {
 	text-decoration:none;
 }
 
-main {
-	padding: 110px 4% 30px 280px;
-}
 
 #cnt_edicion {
 	padding-left: 40px;

@@ -9,6 +9,8 @@
 
 body {
     background-color: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
 }
 
 button,
@@ -34,4 +36,38 @@ header {
 
 .button:hover {
     background-color: $button-green-hover;
+}
+
+.main-container {
+    grid-column: 2 / 4;
+    padding: 60px 20px;
+}
+
+.header {
+    background-color:#000;
+	background-image: url('../resources/header-logo.jpg');
+	background-repeat: no-repeat;
+    grid-column: 1 / 4;
+    height: 50px;
+	width: 100%;
+}
+
+.logout-btn {
+    background:#666;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 12px;
+    font-style: normal;
+    padding: 10px 0 10px 0;
+    text-align: center;
+    width: 100%;
+
+    a {
+        color: #fff;
+        text-decoration:none;
+
+        &:hover {
+            color: #333;
+            text-decoration:none;
+        }
+    }
 }

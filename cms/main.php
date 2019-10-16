@@ -15,9 +15,10 @@
 
     <body>
         <?php include_once('includes/header.php'); ?>
+
         <?php include_once('components/navigation/nav.php'); ?>
 
-        <main>
+        <main class="main-container">
             <div id="cnt_edicion">
                 <section>
                     <h3>

@@ -7,7 +7,9 @@
   font-size: 14px; }
 
 body {
-  background-color: none; }
+  background-color: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); }
 
 button,
 input[type=text],
@@ -29,6 +31,73 @@ header {
 
 .button:hover {
   background-color: #1cd651; }
+
+.main-container {
+  grid-column: 2 / 4;
+  padding: 60px 20px; }
+
+.header {
+  background-color: #000;
+  background-image: url("../resources/header-logo.jpg");
+  background-repeat: no-repeat;
+  grid-column: 1 / 4;
+  height: 50px;
+  width: 100%; }
+
+.logout-btn {
+  background: #666;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 12px;
+  font-style: normal;
+  padding: 10px 0 10px 0;
+  text-align: center;
+  width: 100%; }
+  .logout-btn a {
+    color: #fff;
+    text-decoration: none; }
+    .logout-btn a:hover {
+      color: #333;
+      text-decoration: none; }
+
+.navigation-container {
+  background-color: #333333;
+  color: #999999;
+  font-family: "Courier New", "Courier", "monospace";
+  grid-column: 1 / 2;
+  height: calc(100vh - 50px);
+  padding: 60px 25px 25px;
+  top: 50px;
+  width: auto; }
+  .navigation-container .logout-btn {
+    margin-bottom: 30px; }
+    .navigation-container .logout-btn:hover {
+      background-color: red; }
+  .navigation-container .date {
+    padding-bottom: 15px; }
+  .navigation-container .user-info {
+    border: 1px solid white;
+    margin-bottom: 20px;
+    padding: 15px; }
+    .navigation-container .user-info .user,
+    .navigation-container .user-info .domain {
+      color: #0Cf;
+      font-size: 13px; }
+    .navigation-container .user-info .nav_fecha {
+      font-size: 13px;
+      color: #CCC; }
+  .navigation-container .navigation {
+    font-size: 15px;
+    text-transform: capitalize; }
+    .navigation-container .navigation a {
+      color: #999999;
+      text-decoration: none; }
+      .navigation-container .navigation a:hover {
+        color: white; }
+  .navigation-container .nav-items-container {
+    color: #999999;
+    padding: 15px 30px; }
+    .navigation-container .nav-items-container .nav-item {
+      padding: 5px 0; }
 
 .login-container {
   padding-top: 100px; }

@@ -1,0 +1,62 @@
+.navigation-container {
+	background-color: $darker-grey;
+    color: $dark-grey;
+    font-family: $main-font;
+    grid-column: 1 / 2;
+	height: calc(100vh - 50px);
+	padding: 60px 25px 25px;
+	top: 50px;
+    width: auto;
+
+    .logout-btn {
+        margin-bottom: 30px;
+
+        &:hover {
+            background-color: $red;
+        }
+    }
+
+    .date {
+        padding-bottom: 15px;
+    }
+
+    .user-info {
+        border: 1px solid $white;
+        margin-bottom: 20px;;
+        padding: 15px;
+
+        .user,
+        .domain  {
+            color: $blue;
+            font-size:13px;
+        }
+
+        .nav_fecha {
+            font-size: 13px;
+            color: $grey;
+        }
+    }
+
+    .navigation {
+        font-size:15px;
+        text-transform:capitalize;
+
+        a {
+            color: $dark-grey;
+            text-decoration:none;
+
+            &:hover {
+                color: $white;
+            }
+        }
+    }
+
+    .nav-items-container {
+        color: $dark-grey;
+        padding: 15px 30px;
+
+        .nav-item {
+            padding: 5px 0;
+        }
+    }
+}
