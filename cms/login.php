@@ -9,7 +9,7 @@
 	</head>
 
 	<body>
-		<header></header>
+		<header class="header"></header>
 		<main class="login-container">
 			<section class="login">
 				<form method="post">
