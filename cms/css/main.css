@@ -24,8 +24,14 @@ header {
   height: 50px;
   width: 100%; }
 
+h1 {
+  font-size: 20px; }
+
 h2 {
   font-size: 16px; }
+
+section {
+  padding: 15px 0; }
 
 .button {
   background-color: #3cf971;
@@ -127,3 +133,21 @@ h2 {
       border: 1px solid white;
       margin-top: 40px;
       padding: 30px; }
+
+.main-image p {
+  padding: 15px 0; }
+
+.main-image .button {
+  display: block;
+  width: 250px;
+  text-align: center; }
+
+.main-image .select-image-btn {
+  background-color: transparent;
+  border: 1px solid #3cf971;
+  color: #3cf971; }
+
+.main-image .new-file-wrapper {
+  border: 2px dotted #CCC;
+  padding: 15px;
+  width: 90%; }

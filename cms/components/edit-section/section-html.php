@@ -1,6 +1,6 @@
 <div id="section" data-component="section">
-    <h1>Edición de Sección</h1>
-    <h2><?php echo Section::getSectionTitle(); ?></h2>
+    <h2>Edición de Sección</h2>
+    <h1><?php echo Section::getSectionTitle(); ?></h1>
 
     <section>
         <a class="titulo-rojo" href="puente_metatags.php?seccion_id=' . $seccion_id . '&sec='. $seccion_tt.'">
@@ -10,10 +10,8 @@
 
     <section>
         <?php
-            $mainImageDataArr = $data['contentImage'];
-
-            require_once('components/main-image/main-image.php');
-            ?>
+            require_once('components/main-image/main-image-html.php');
+        ?>
     </section>
 
     <section id="insert-section">

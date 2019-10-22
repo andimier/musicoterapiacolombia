@@ -20,7 +20,7 @@
 
         <main class="main-container">
             <div id="cnt_edicion">
-                <section>
+                <!-- <section>
                     <h3>
                         Hola!
                     </h3>
@@ -38,7 +38,7 @@
                         <li id="item3" class="item" draggable="true">item3</li>
                         <li id="item4" class="item" draggable="true">item4</li>
                     </ul>
-                </section>
+                </section> -->
 
                 <section id="editing-container">
                     <?php

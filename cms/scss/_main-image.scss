@@ -1,0 +1,23 @@
+.main-image {
+    p {
+        padding: 15px 0;
+    }
+
+    .button {
+        display: block;
+        width: 250px;
+        text-align: center;
+    }
+
+    .select-image-btn {
+        background-color: transparent;
+        border: 1px solid $buttons-green;
+        color: $buttons-green;
+    }
+
+    .new-file-wrapper {
+        border: 2px dotted $grey;
+        padding: 15px;
+        width: 90%;
+    }
+}
