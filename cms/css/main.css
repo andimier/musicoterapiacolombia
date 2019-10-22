@@ -134,8 +134,8 @@ section {
       margin-top: 40px;
       padding: 30px; }
 
-.main-image p {
-  padding: 15px 0; }
+.main-image h3 {
+  padding: 0 0 15px; }
 
 .main-image .button {
   display: block;
