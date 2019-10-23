@@ -13,7 +13,8 @@
 
         foreach($required_fields as $fieldname){
             if (!isset($_POST[$fieldname]) || (empty($_POST[$fieldname])  && !is_numeric($_POST[$fieldname]))) {
-                $errors[] = $fieldname;
+                if ($fieldname == 'username') $errors[] = 'usuario';
+                if ($fieldname == 'password') $errors[] = 'contraseña';
             }
         }
 
