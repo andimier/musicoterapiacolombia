@@ -27,8 +27,9 @@
 
     <section id="section-contents-container">
         <ul>
-            <li>
-            </li>
+            <?php for ($i = 0; $i < count($data['contentItems']); $i++): ?>
+                <li><?php echo $data['contentItems'][$i]['title']; ?></li>
+            <?php endfor; ?>
         </ul>
     </section>
 </div>

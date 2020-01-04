@@ -37,7 +37,7 @@
                         </a>
                     </li>
                 <?php endfor; ?>
-</ol>
+            </ol>
         <?php endif; ?>
 
 		<a href="albumes.php">+ albumes</a>

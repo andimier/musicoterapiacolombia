@@ -7,7 +7,7 @@
 
     class UploadImageFile {
         public $file = [];
-        public $isFileUploaded = false;
+        public $isFileUploaded = FALSE;
         private const TARGET_FOLDER = '../images/';
         private const IMAGE_PATHS = [
             "imagenes/pequenas/",

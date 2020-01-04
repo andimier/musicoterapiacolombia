@@ -8,20 +8,51 @@
             echo 'The sectionId have not been set <br />';
         }
 
-        private static function getSection() {
+        private static function getQuery($query) {
             global $connection;
             global $pFunctions;
 
-            $sectionId = self::getSectionId();
             $q = NULL;
 
-            if ($sectionId) {
-                $q = $pFunctions->getPhpQuery("SELECT * FROM sections WHERE id = " . $sectionId);
+            if ($query) {
+                $q = $pFunctions->getPhpQuery($query);
             }
 
             if ($q) return $q;
 
             echo "ERROR => THE QUERY WASN NOT SUCCESSFUL <br />";
+        }
+
+        private static function getSection() {
+            $sectionId = self::getSectionId();
+
+            if ($sectionId) {
+                $query = "SELECT * FROM sections WHERE id = " . $sectionId;
+
+                return self::getQuery($query);
+            }
+        }
+
+        private static function getSectionContentItems($sectionId) {
+            global $pFunctions;
+
+            $q = NULL;
+            $data = [];
+
+            if ($sectionId) {
+                $query = "SELECT * FROM contentItems WHERE sectionId = " . $sectionId;
+                $r = self::getQuery($query);
+
+                while ($d = $pFunctions->getFetchArray($r)) {
+                    array_push($data, [
+                        'id' => $d['id'],
+                        'creationDate' => $d['date'],
+                        'title' => $d['title']
+                    ]);
+                }
+            }
+
+            return $data;
         }
 
         public static function getSectionData() {
@@ -42,7 +73,8 @@
                             "image" => Utils::getMainImage($d['contentImageSet']),
                             "contentId" => $d['id'],
                             "contentType" =>"section"
-                        ]
+                        ],
+                        'contentItems' => self::getSectionContentItems($d['id'])
                     ];
                 }
 

@@ -1,10 +1,6 @@
 <?php
     class Utils {
-        private const CONTENT_TYPES = [
-            'sections',
-            'content',
-            'text'
-        ];
+
 
         public static function getContentType($type) {
             return [
@@ -69,7 +65,7 @@
         }
 
         public static function getMainImage($imageSet) {
-            $mainImage = 'resources/icons/photo.png';
+            $mainImage = null;
 
             if (!empty($imageSet)) {
                 $img_arr = explode($imageSet, ',');

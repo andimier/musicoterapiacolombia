@@ -3,7 +3,13 @@
 
 <div class="main-image" data-component="main-image">
     <section class="new-file-wrapper">
-        <img src="<?php echo $mainImageDataArr['image']; ?>" width="165"/>
+        <h2>Imagen principal de este contenido</h2>
+
+        <?php if ($mainImageDataArr['image']): ?>
+            <img src="<?php echo $mainImageDataArr['image'] ?>" width="165"/>
+        <?php else: ?>
+            <h4>No hay imagen seleccionada aún. </h4>
+        <?php endif; ?>
     <!-- <a href="crud/update-image.php?contentType=section">a crud por favor</a> -->
 
         <form enctype="multipart/form-data" method="post" action="crud/update-image.php">
@@ -12,7 +18,6 @@
             <input type="hidden" name="image" value="<?php echo $mainImageDataArr['image']; ?>" />
             <input type="hidden" name="currentUrl" value="<?php echo Utils::getCurrentUrl(); ?>" />
 
-            <h3>Selecciona una imagen de tu computador</h3>
             <label for="image-file" class="button select-image-btn">Seleccionar imagen</label>
             <input id="image-file"
                 type="file"
