@@ -28,7 +28,11 @@
     <section id="section-contents-container">
         <ul>
             <?php for ($i = 0; $i < count($data['contentItems']); $i++): ?>
-                <li><?php echo $data['contentItems'][$i]['title']; ?></li>
+                <li>
+                    <a href="<?php echo Section::getContentUrl($data['contentItems'][$i]) ?>">
+                        <?php echo $data['contentItems'][$i]['title']; ?>
+                    </a>
+                </li>
             <?php endfor; ?>
         </ul>
     </section>

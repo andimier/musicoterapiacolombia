@@ -87,6 +87,17 @@
         public static function getSectionTitle() {
             return isset($_GET['sectionTitle']) ? urldecode($_GET['sectionTitle']) : 'NO SECTION TITLE';
         }
+
+        static public function getContentUrl($contentItem) {
+            $section = self::getSectionTitle();
+
+            $url = 'main.php?';
+            $url .= 'contentType=content';
+            $url .= '&contentItemId=' . $contentItem['id'];
+            $url .= '&sectionTitle=' . preg_replace('/\s/ ', '-', $section);
+
+            return $url;
+        }
     }
 
     $data = Section::getSectionData();

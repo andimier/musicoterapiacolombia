@@ -1,31 +1,29 @@
 <?php
-    class Section {
-        private function getSectionId() {
-            if (isset($_GET['sectionId'])) {
-                return $_GET['sectionId'];
+    class Content {
+        static private function getSectionId() {
+            if (isset($_GET['contentItemId'])) {
+                return $_GET['contentItemId'];
             } else {
-                echo 'The sectionId have not been set <br />';
+                echo 'The contentItemId have not been set <br />';
             }
         }
 
-        private function getContent() {
+        static private function getContent() {
             global $connection;
             global $pFunctions;
 
             $q = $pFunctions->getPhpQuery(
-                "SELECT * FROM contents WHERE sectionId = " . $this->getSectionId(),
+                "SELECT * FROM contentItems WHERE id = " . self::getSectionId(),
                 $connection
             );
 
-            if ($q) {
-                return $pFunctions->getFetchArray($q);
-            }
+            if ($q) return $q;
 
             return 'Not a valid query';
         }
 
         private function getMainImage() {
-            $mainImage = $this->getContent()['contentImageSet'];
+            $mainImage = self::getContent()['contentImageSet'];
 
             if (empty($mainImage)) {
                 $mainImage = 'iconos/photo.png';
@@ -38,11 +36,17 @@
             global $pFunctions;
 
             $data = [];
+            $content = self::getContent();
 
-            while ($d = self::getContent()) {
+            while ($d = $pFunctions->getFetchArray($content)) {
                 $data = [
                     'title' => $d['title'],
-                    'contentId' => $d['id']
+                    'contentId' => $d['id'],
+                    'contentImage' => [
+                        "image" => Utils::getMainImage($d['contentImageSet']),
+                        "contentId" => $d['id'],
+                        "contentType" =>"section"
+                    ],
                     //'linkUrl' => 'editar-subcontenido.php?contenido_id=' . $subContent['id'],
                 ];
             }
@@ -51,5 +55,6 @@
         }
     }
 
+    $data = Content::getContentData();
     require_once('components/edit-content/edit-content-html.php');
 ?>
