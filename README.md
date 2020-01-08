@@ -58,6 +58,7 @@ Textos
 Sections
 |id|seccion|plantila
 
+```
 sections: [
     {
         id: int 11,
@@ -66,7 +67,8 @@ sections: [
         contentImageSet: text
     }
 ]
-
+```
+```
 contentItems: [
     {
         id:
@@ -86,6 +88,7 @@ contentItems: [
         // items: []
     }
 ]
+```
 
 
 Etapas / entregas
