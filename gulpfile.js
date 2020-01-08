@@ -1,11 +1,10 @@
-const gulp = require('gulp');
-const sass = require('gulp-sass');
 const concatCss = require('gulp-concat-css');
 const removeFiles = require('gulp-remove-files');
-const browserSync = require('browser-sync').create();
-
-const baseRoute = './cms/';
 const cssSrcFiles = ['./cms/css/login.css', './cms/css/shared.css'];
+
+const gulp = require('gulp');
+const sass = require('gulp-sass');
+const browserSync = require('browser-sync').create();
 const sourceCSSFiles = './cms/scss/**/*.scss';
 const sourceMainCSS = './cms/scss/main.scss';
 
