@@ -76,7 +76,6 @@ section {
   grid-column: 1 / 2;
   height: calc(100%);
   padding: 60px 25px 25px;
-  top: 50px;
   width: auto; }
   .navigation-container .logout-btn {
     margin-bottom: 30px; }

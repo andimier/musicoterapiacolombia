@@ -1,5 +1,3 @@
-var textLength = document.querySelector('#caja2') && document.querySelector('#caja2').innerText.length;
-
 function parseLink(link, text) {
     var hRef = link.match(/href=[-_\/\w":.;?&=]+/);
 
@@ -74,7 +72,7 @@ function formatPastedTags() {
 
             this.innerHTML = newText;
         } else {
-            this.innerHTML = this.innerText;
+            this.innerHTML = replaceLineBreaks(this.innerText);
         }
     }
 
@@ -83,14 +81,22 @@ function formatPastedTags() {
     this.removeEventListener('input', formatPastedTags, false);
 }
 
-document.querySelector('#text-input-box').addEventListener('paste', function() {
-    this.addEventListener('input', formatPastedTags, false);
-});
+var textInputBox = document.querySelector('#text-input-box');
 
-document.querySelector('#save-text-btn').addEventListener('click', function() {
-    var form = document.getElementById("text-edit-form");
-    var text = document.querySelector('#text-input-box').innerHTML;
+if (textInputBox) {
+    var textLength = textInputBox.innerText.length;
 
-    form.elements['item-text'].value = text.trim();
-    form.submit();
-});
+    document.querySelector('#text-input-box').addEventListener('paste', function() {
+        this.addEventListener('input', formatPastedTags, false);
+    });
+
+    document.querySelector('#save-text-btn').addEventListener('click', function() {
+        var form = document.getElementById("text-edit-form");
+        var text = document.querySelector('#text-input-box').innerHTML;
+
+        form.elements['item-text'].value = text.trim();
+        form.submit();
+    });
+}
+
+

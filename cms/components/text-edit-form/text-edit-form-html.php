@@ -11,10 +11,10 @@
         <form enctype="multipart/form-data" action="crud/table-update.php" name="formularioedicion1" id="text-edit-form" method="post">
             <!-- <input type="hidden" name="idioma" value="<?php echo $txt_idioma;?>"/> -->
             <input type="hidden" name="id" value="<?php echo $data['textData']['textId'];?>"/>
-            <input type="hidden" name="parentUrl" id="titulo" value="<?php echo $data['textData']['parentUrl']; ?>"/>
+            <input type="hidden" name="parentUrl" value="<?php echo $data['textData']['parentUrl']; ?>"/>
 
             <label>Título
-                <input type="text" name="title" id="titulo" value="<?php echo $data['textData']['title']; ?>" size="50" maxlength="50" />
+                <input type="text" name="title" value="<?php echo $data['textData']['title']; ?>" size="50" maxlength="50" />
             </label>
 
             <label>Texto del contenido
