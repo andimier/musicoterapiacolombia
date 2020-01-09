@@ -82,11 +82,9 @@ document.querySelector('#text-input-box').addEventListener('input', function() {
 });
 
 document.querySelector('#save-text-btn').addEventListener('click', function() {
-    event.preventDefault();
-
     var form = document.getElementById("text-edit-form");
     var text = document.querySelector('#text-input-box').innerHTML;
 
     form.elements['item-text'].value = text.trim();
-    //form.submit();
+    form.submit();
 });

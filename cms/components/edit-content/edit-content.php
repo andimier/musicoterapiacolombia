@@ -33,12 +33,17 @@
             $q = Utils::getRow('texts', $contentId);
             $data = [];
 
+            $parentUrl = "contentType={$_GET['contentType']}";
+            $parentUrl .= "&contentItemId={$_GET['contentItemId']}";
+            $parentUrl .= "&sectionTitle={$_GET['sectionTitle']}";
+
             if ($q) {
                 while ($d = $pFunctions->getFetchArray($q)) {
                     $data = [
                         'textId' => $d['id'],
                         'title' => $d['title'],
-                        'text' => $d['text']
+                        'text' => $d['text'],
+                        'parentUrl' => $parentUrl
                     ];
                 }
 

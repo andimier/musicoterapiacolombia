@@ -1,4 +1,5 @@
 <?php
+    require_once("../required/session.php");
     require_once("../required/connection.php");
 
     class TableUpdate {
@@ -11,7 +12,12 @@
 
         static public function updateText($post) {
             if (isset($post['id'])) {
-                echo 'Actualizando textos';
+                $content = "title = '{$post['title']}',";
+                $content .= "text = '{$post['item-text']}'";
+
+                self::updateTable('texts', $post['id'], $content);
+
+                header("Location: ../main.php?{$post['parentUrl']}");
             }
         }
     }
@@ -19,4 +25,5 @@
     if (isset($_POST['update-text-btn'])) {
         TableUpdate::updateText($_POST);
     }
+
 ?>
