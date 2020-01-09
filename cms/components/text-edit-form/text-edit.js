@@ -3,7 +3,7 @@ var textLength = document.querySelector('#caja2') && document.querySelector('#ca
 function parseLink(link, text) {
     var hRef = link.match(/href=[-_\/\w":.;?&=]+/);
 
-    return "<a " + hRef + ">" + text + "</a>";
+    return '<a ' + hRef + '>' + text + '</a>';
 }
 
 function getLinksText(link) {
@@ -74,7 +74,7 @@ document.querySelector('#text-input-box').addEventListener('input', function() {
                 replaceText(text, links)
             );
 
-            this.innerHTML = newText;
+            this.innerHTML = newText + '<br>';
         }
     }
 

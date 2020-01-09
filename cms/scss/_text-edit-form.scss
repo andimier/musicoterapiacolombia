@@ -17,11 +17,12 @@
     input[type=text],
     .text-input-box {
         border: 1px solid black;
+        padding: 20px;
     }
 
     .text-input-box {
+        display: inline-block;
         height: 300px;
-        padding: 20px;
         overflow: scroll;
         width: 90%;
     }

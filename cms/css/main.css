@@ -74,7 +74,7 @@ section {
   color: #999999;
   font-family: "Courier New", "Courier", "monospace";
   grid-column: 1 / 2;
-  height: calc(100vh - 50px);
+  height: calc(100%);
   padding: 60px 25px 25px;
   top: 50px;
   width: auto; }
@@ -166,10 +166,11 @@ section {
 
 .text-edit-form input[type=text],
 .text-edit-form .text-input-box {
-  border: 1px solid black; }
+  border: 1px solid black;
+  padding: 20px; }
 
 .text-edit-form .text-input-box {
+  display: inline-block;
   height: 300px;
-  padding: 20px;
   overflow: scroll;
   width: 90%; }
