@@ -151,3 +151,25 @@ section {
   border: 2px dotted #CCC;
   padding: 15px;
   width: 90%; }
+
+.text-edit-form label,
+.text-edit-form input,
+.text-edit-form select {
+  display: block; }
+
+.text-edit-form label,
+.text-edit-form select {
+  padding: 20px 0; }
+
+.text-edit-form textarea {
+  display: none; }
+
+.text-edit-form input[type=text],
+.text-edit-form .text-input-box {
+  border: 1px solid black; }
+
+.text-edit-form .text-input-box {
+  height: 300px;
+  padding: 20px;
+  overflow: scroll;
+  width: 90%; }

@@ -77,7 +77,7 @@ contentItems: [
         contentType: String / parent type [section, content]
         galleryID:
         isSubContent: Boolean,
-        contentDesignType: String[olist, uList, text],
+        contentDesignType: String[olist, uList, text, profile],
         visible: Boolean,
         fecha:
         title:

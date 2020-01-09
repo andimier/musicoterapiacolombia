@@ -12,6 +12,7 @@
         <option value="p" selected>Párrafo</option>
         <option value="ul">Lista estándar</option>
         <option value="ol">Lista numerada</option>
+        <option value="pe">Perfil</option>
     </select>
 
     <input type="submit" name="crateContent" id="crateContent" class="fondo_azul" value="insertar contenido"/>
