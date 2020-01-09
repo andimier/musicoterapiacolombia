@@ -62,7 +62,7 @@ function replaceLineBreaks(str) {
     return output;
 }
 
-document.querySelector('#caja2').addEventListener('input', function() {
+document.querySelector('#text-input-box').addEventListener('input', function() {
     var text = this.innerText;
 
     if ((text.length - textLength) > 1) {
@@ -75,9 +75,18 @@ document.querySelector('#caja2').addEventListener('input', function() {
             );
 
             this.innerHTML = newText;
-            document.querySelector('textarea').value = newText;
         }
     }
 
     textLength = this.innerText.length;
+});
+
+document.querySelector('#save-text-btn').addEventListener('click', function() {
+    event.preventDefault();
+
+    var form = document.getElementById("text-edit-form");
+    var text = document.querySelector('#text-input-box').innerHTML;
+
+    form.elements['item-text'].value = text.trim();
+    //form.submit();
 });

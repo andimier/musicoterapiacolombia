@@ -75,6 +75,18 @@
             return $mainImage;
         }
 
+        public static function getRow($table, $id) {
+            global $pFunctions;
+            global $connection;
+
+            $q = $pFunctions->getPhpQuery(
+                "SELECT * FROM $table WHERE id = " . $id . " LIMIT 1",
+                $connection
+            );
+
+            return $q;
+        }
+
         function traer_seccion_por_id($seccion_id){
             global $connection;
             $query = "SELECT * FROM secciones WHERE id=" . $seccion_id ." LIMIT 1";

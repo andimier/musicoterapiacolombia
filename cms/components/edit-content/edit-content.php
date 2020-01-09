@@ -9,13 +9,8 @@
         }
 
         static private function getContent() {
-            global $connection;
-            global $pFunctions;
-
-            $q = $pFunctions->getPhpQuery(
-                "SELECT * FROM contentItems WHERE id = " . self::getSectionId(),
-                $connection
-            );
+            $sectionId = self::getSectionId();
+            $q = Utils::getRow('contentItems', $sectionId);
 
             if ($q) return $q;
 
@@ -32,6 +27,27 @@
             return $mainImage;
         }
 
+        private static function getTextData($contentId) {
+            global $pFunctions;
+
+            $q = Utils::getRow('texts', $contentId);
+            $data = [];
+
+            if ($q) {
+                while ($d = $pFunctions->getFetchArray($q)) {
+                    $data = [
+                        'textId' => $d['id'],
+                        'title' => $d['title'],
+                        'text' => $d['text']
+                    ];
+                }
+
+                return $data;
+            }
+
+            return NULL;
+        }
+
         static public function getContentData() {
             global $pFunctions;
 
@@ -42,6 +58,7 @@
                 $data = [
                     'title' => $d['title'],
                     'contentId' => $d['id'],
+                    'textData' => self::getTextData($d['id']),
                     'contentImage' => [
                         "image" => Utils::getMainImage($d['contentImageSet']),
                         "contentId" => $d['id'],

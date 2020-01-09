@@ -6,21 +6,17 @@
     <img class="intLink" title="Subrayar" onClick="formatDoc('underline');" src="edicion/iconos/underline.png" />
 </div>
 
-<form enctype="multipart/form-data" action="" name="formularioedicion1" id="formularioedicion1" method="post">
-    <!-- <input type="hidden" name="tabla" value="<?php echo $tabla;?>"/>
-    <input type="hidden" name="contenido_id"  value="<?php echo $txt_contenido_id;?>"/>
-    <input type="hidden" name="texto_id" value="<?php echo $txt_texto_id;?>"/>
-    <input type="hidden" name="id" value="<?php echo $txt_id;?>"/>
-    <input type="hidden" name="idioma" value="<?php echo $txt_idioma;?>"/>
+<?php if ($data['textData'] != NULL): ?>
+    <form enctype="multipart/form-data" action="crud/table-update.php" name="formularioedicion1" id="text-edit-form" method="post">
+        <!-- <input type="hidden" name="idioma" value="<?php echo $txt_idioma;?>"/> -->
+        <input type="hidden" name="id" value="<?php echo $data['textData']['textId'];?>"/>
+        <input type="text" name="titulo" id="titulo" value="<?php echo $data['textData']['title']; ?>" size="50" maxlength="50" />
 
-    <input type="text" name="titulo" id="titulo" value="<?php echo $txt_titulo; ?>" size="50" maxlength="50" />
-    <input type="text" name="fecha" id="fecha"  value="<?php echo $txt_fecha; ?>"  size="50" maxlength="50" /> -->
+        <div id="text-input-box" contenteditable="true" style="background-color:#ff0">
+            <?php echo $data['textData']['text']; ?>
+        </div>
+        <textarea name="item-text" style="border: 1px solid black;" id="item-text" cols="100" rows="14" ></textarea>
 
-    <div id="cnt_cajasdetexto">
-        <div id="caja2" contenteditable="true" style="background-color:#ff0"></div>
-    </div>
-
-    <textarea name="areadetexto" style="border: 1px solid black;" id="areadetexto" cols="100" rows="14" ></textarea>
-
-    <input type="submit" name="boton1" id="save-text" value="Guardar"/>
-</form>
+        <input type="submit" name="update-text-btn" id="save-text-btn" value="Guardar"/>
+    </form>
+<?php endif; ?>
