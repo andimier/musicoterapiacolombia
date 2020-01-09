@@ -8,42 +8,14 @@
             echo 'The sectionId have not been set <br />';
         }
 
-        private static function getQuery($query) {
-            global $connection;
-            global $pFunctions;
-
-            $q = NULL;
-
-            if ($query) {
-                $q = $pFunctions->getPhpQuery($query);
-            }
-
-            if ($q) return $q;
-
-            echo "ERROR => THE QUERY WASN NOT SUCCESSFUL <br />";
-        }
-
-        private static function getSection() {
-            $sectionId = self::getSectionId();
-
-            if ($sectionId) {
-                $query = "SELECT * FROM sections WHERE id = " . $sectionId;
-
-                return self::getQuery($query);
-            }
-        }
-
         private static function getSectionContentItems($sectionId) {
             global $pFunctions;
 
-            $q = NULL;
             $data = [];
+            $q = Utils::getRow('contentItems', $sectionId);
 
-            if ($sectionId) {
-                $query = "SELECT * FROM contentItems WHERE sectionId = " . $sectionId;
-                $r = self::getQuery($query);
-
-                while ($d = $pFunctions->getFetchArray($r)) {
+            if (isset($sectionId) && $q != null) {
+                while ($d = $pFunctions->getFetchArray($q)) {
                     array_push($data, [
                         'id' => $d['id'],
                         'creationDate' => $d['date'],
@@ -58,7 +30,8 @@
         public static function getSectionData() {
             global $pFunctions;
 
-            $section = self::getSection();
+            $sectionId = self::getSectionId();
+            $section = Utils::getRow('sections', $sectionId);
             $data = [];
 
             if ($section && !empty($section)) {
