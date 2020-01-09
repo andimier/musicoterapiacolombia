@@ -62,7 +62,7 @@ function replaceLineBreaks(str) {
     return output;
 }
 
-document.querySelector('#text-input-box').addEventListener('input', function() {
+function formatPastedTags() {
     var text = this.innerText;
 
     if ((text.length - textLength) > 1) {
@@ -70,15 +70,21 @@ document.querySelector('#text-input-box').addEventListener('input', function() {
         var links = getLinks(html, []);
 
         if (links) {
-            var newText = replaceLineBreaks(
-                replaceText(text, links)
-            );
+            var newText = replaceLineBreaks(replaceText(text, links));
 
-            this.innerHTML = newText + '<br>';
+            this.innerHTML = newText;
+        } else {
+            this.innerHTML = this.innerText;
         }
     }
 
     textLength = this.innerText.length;
+
+    this.removeEventListener('input', formatPastedTags, false);
+}
+
+document.querySelector('#text-input-box').addEventListener('paste', function() {
+    this.addEventListener('input', formatPastedTags, false);
 });
 
 document.querySelector('#save-text-btn').addEventListener('click', function() {
