@@ -8,19 +8,24 @@
 
             $q = "UPDATE $table SET $content WHERE id = $id";
             $u_txt = mysqli_query($connection, $q);
+
+            return mysqli_affected_rows($connection) == 1 ? TRUE : NULL;
         }
 
         static public function updateText($post) {
             if (isset($post['id'])) {
                 $content = "title = '{$post['title']}',";
                 $content .= "text = '{$post['item-text']}'";
+                $updateSuccessStr = "successful";
 
-                self::updateTable('texts', $post['id'], $content);
+                $textUpdate = self::updateTable('texts', $post['id'], $content);
+                $parentUpdate = self::updateTable('contentItems', $post['contentId'], "title = '{$post['title']}'");
 
-                // Update parent title
-                self::updateTable('contentItems', $post['contentId'], "title = '{$post['title']}'");
+                if ($textUpdate == NULL && $parentUpdate == NULL) {
+                    $updateSuccessStr = "unsuccessful";
+                }
 
-                header("Location: ../main.php?{$post['parentUrl']}");
+                header("Location: ../main.php?{$post['parentUrl']}&contentUpdate={$updateSuccessStr}");
             }
         }
     }
