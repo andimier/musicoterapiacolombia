@@ -17,6 +17,9 @@
 
                 self::updateTable('texts', $post['id'], $content);
 
+                // Update parent title
+                self::updateTable('contentItems', $post['contentId'], "title = '{$post['title']}'");
+
                 header("Location: ../main.php?{$post['parentUrl']}");
             }
         }

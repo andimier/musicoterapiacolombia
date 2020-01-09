@@ -10,6 +10,7 @@
     <?php if ($data['textData'] != NULL): ?>
         <form enctype="multipart/form-data" action="crud/table-update.php" name="formularioedicion1" id="text-edit-form" method="post">
             <!-- <input type="hidden" name="idioma" value="<?php echo $txt_idioma;?>"/> -->
+            <input type="hidden" name="contentId" value="<?php echo $data['contentId'];?>"/>
             <input type="hidden" name="id" value="<?php echo $data['textData']['textId'];?>"/>
             <input type="hidden" name="parentUrl" value="<?php echo $data['textData']['parentUrl']; ?>"/>
 
