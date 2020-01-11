@@ -12,7 +12,9 @@
             global $pFunctions;
 
             $data = [];
-            $q = Utils::getRow('contentItems', $sectionId);
+
+            $qStr = "sectionId = {$sectionId}";
+            $q = Utils::getRow('contentItems', $qStr, FALSE);
 
             if (isset($sectionId) && $q != null) {
                 while ($d = $pFunctions->getFetchArray($q)) {
@@ -30,8 +32,8 @@
         public static function getSectionData() {
             global $pFunctions;
 
-            $sectionId = self::getSectionId();
-            $section = Utils::getRow('sections', $sectionId);
+            $q = "id = " . self::getSectionId();
+            $section = Utils::getRow('sections', $q, TRUE);
             $data = [];
 
             if ($section && !empty($section)) {

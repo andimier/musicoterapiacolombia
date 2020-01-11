@@ -10,7 +10,9 @@
 
         static private function getContent() {
             $sectionId = self::getSectionId();
-            $q = Utils::getRow('contentItems', $sectionId);
+
+            $qStr = "id = {$sectionId}";
+            $q = Utils::getRow('contentItems', $qStr, TRUE);
 
             if ($q) return $q;
 
@@ -30,7 +32,8 @@
         private static function getTextData($contentId) {
             global $pFunctions;
 
-            $q = Utils::getRow('texts', $contentId);
+            $qStr = "sectionId = {$contentId}";
+            $q = Utils::getRow('texts', $qStr, TRUE);
             $data = [];
 
             $parentUrl = "contentType={$_GET['contentType']}";

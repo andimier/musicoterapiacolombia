@@ -75,12 +75,14 @@
             return $mainImage;
         }
 
-        public static function getRow($table, $id) {
+        public static function getRow($table, $qStr, $limit) {
             global $pFunctions;
             global $connection;
 
+            $l = ($limit == TRUE) ? " LIMIT 1" : "";
+
             $q = $pFunctions->getPhpQuery(
-                "SELECT * FROM $table WHERE id = " . $id . " LIMIT 1",
+                "SELECT * FROM $table WHERE " . $qStr . $l,
                 $connection
             );
 
