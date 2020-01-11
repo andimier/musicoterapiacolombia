@@ -9,8 +9,11 @@
             return date("Y-m-j");
         }
 
-        static private function insertTable($table, $columns, $values) {
+        static private function insertTable($table, $data) {
             global $connection;
+
+            $columns = $data['columns'];
+            $values = $data['values'];
 
             $insertedContent = NULL;
             $insertedId = NULL;
@@ -44,6 +47,7 @@
                     $separator = "";
                 }
 
+                // $i = 0 (contentId) always comes as a String in double quotes. Must not be surrounded by single quotes.
                 if ($type == "values" && $i != 0 && is_string($data[$i])) {
                     $value = "'" . $data[$i] . "'";
                 }
@@ -61,17 +65,20 @@
             ];
         }
 
-        static private function getNewTextParameters($data, $contentId) {
+        static private function getNewTextParams($data, $contentId) {
             return [
-                "columns" => "sectionId, contentId, title, subTitle, text",
-                "values" => "" . $data['sectionId'] . ", $contentId, 'Cambia este título', 'Cambia este subtítulo', 'Cambia este texto'"
+                'sectionId' => $data['sectionId'],
+                'contentId' => $contentId,
+                'title' => $data['title'],
+                'subTitle' => 'Cambia este subtítulo',
+                'text' => 'Cambia este texto'
             ];
         }
 
         static private function getNewContentParams($post) {
             return [
                 'sectionId' => $post['sectionId'],
-                'parentItemID' => 0,
+                'parentItemId' => 0,
                 'contentType' => $post['contentType'],
                 'contentDesignType' => isset($post['contentDesignType']) ? $post['contentDesignType'] : 'text',
                 'galleryId' => 0,
@@ -90,19 +97,12 @@
             $updateSuccessStr = "unsuccessful";
 
             $data = self::getNewContentParams($post);
-            $queryData = self::getQueryData($data);
+            $contentTableInsertion = self::insertTable('contentItems', self::getQueryData($data));
 
-            $contentTableInsertion = self::insertTable('contentItems', $queryData['columns'], $queryData['values']);
+            $textaTableParams = self::getNewTextParams($data, $contentTableInsertion['insertedId']);
+            $textTableInsertion = self::insertTable('texts', self::getQueryData($textaTableParams));
 
-            // $textaTableParams = self::getNewTextParameters($data, $contentTableInsertion['insertedId']);
-
-            // $textTableInsertion = self::insertTable('texts', $textaTableParams['columns'], $textaTableParams['values']);
-
-            // if ($contentTableInsertion['insertedContent'] != NULL && $textTableInsertion['insertedContent'] != NULL) {
-            //     $updateSuccessStr = "successful";
-            // }
-
-            if ($contentTableInsertion['insertedContent'] != NULL) {
+            if ($contentTableInsertion['insertedContent'] != NULL && $textTableInsertion['insertedContent'] != NULL) {
                 $updateSuccessStr = "successful";
             }
 

@@ -32,7 +32,7 @@
         private static function getTextData($contentId) {
             global $pFunctions;
 
-            $qStr = "sectionId = {$contentId}";
+            $qStr = "contentId = {$contentId}";
             $q = Utils::getRow('texts', $qStr, TRUE);
             $data = [];
 
