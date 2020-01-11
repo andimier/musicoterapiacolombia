@@ -1,4 +1,4 @@
-<div id="section" data-component="section">
+<div id="section" data-component="section" class="section">
     <h2>Edición de Sección</h2>
     <h1><?php echo Section::getSectionTitle(); ?></h1>
 
@@ -8,13 +8,13 @@
         </a>
     </section>
 
-    <section>
+    <section class="section-content-wrapper">
         <?php
             require_once('components/main-image/main-image-html.php');
         ?>
     </section>
 
-    <section id="insert-section">
+    <section id="insert-section" class="section-content-wrapper">
         <?php
             $table = $data['table'];
             $sectionId = $data['contentId'];
@@ -25,7 +25,8 @@
         ?>
     </section>
 
-    <section id="section-contents-container">
+    <section id="section-contents-container" class="section-content-wrapper">
+        <h3>Contenidos en esta sección:</h3>
         <ul>
             <?php for ($i = 0; $i < count($data['contentItems']); $i++): ?>
                 <li>

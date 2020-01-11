@@ -8,12 +8,15 @@
     <input type="hidden" name="currentUrl" value="<?php echo Utils::getCurrentUrl(); ?>" />
     <input type="text" name="title" value="" class="letra_azul borde_puntos" size="50" maxlength="50" />
 
-    <select name="contentDesignType">
-        <option value="p" selected>Párrafo</option>
-        <option value="ul">Lista estándar</option>
-        <option value="ol">Lista numerada</option>
-        <option value="pe">Perfil</option>
-    </select>
+    <label>
+        Tipo de contenido:
+        <select name="contentDesignType">
+            <option value="p" selected>Párrafo</option>
+            <option value="ul">Lista estándar</option>
+            <option value="ol">Lista numerada</option>
+            <option value="pe">Perfil</option>
+        </select>
+    </label>
 
-    <input type="submit" name="crateContent" id="crateContent" class="fondo_azul" value="insertar contenido"/>
+    <input type="submit" name="crateContent" id="crateContent" class="button" value="insertar contenido"/>
 </form>

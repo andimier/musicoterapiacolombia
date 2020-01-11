@@ -1,23 +1,6 @@
 .text-edit-form {
-    label,
-    input,
-    select {
-        display: block;
-    }
-
-    label,
-    select {
-        padding: 20px 0;
-    }
-
     textarea {
         display: none;
-    }
-
-    input[type=text],
-    .text-input-box {
-        border: 1px solid black;
-        padding: 20px;
     }
 
     .text-input-box {

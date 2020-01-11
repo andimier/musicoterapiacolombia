@@ -33,6 +33,33 @@ h2 {
 section {
   padding: 15px 0; }
 
+label,
+input,
+select {
+  display: block; }
+
+label,
+select {
+  padding: 20px 0; }
+
+select {
+  height: 40px; }
+
+input[type=text],
+.text-input-box {
+  border: 1px solid black;
+  padding: 20px; }
+
+ul {
+  list-style: none; }
+
+li a {
+  text-decoration: none;
+  color: white; }
+
+li a:hover {
+  color: #999999; }
+
 .button {
   background-color: #3cf971;
   color: white;
@@ -68,6 +95,12 @@ section {
     .logout-btn a:hover {
       color: #333;
       text-decoration: none; }
+
+.section-content-wrapper {
+  border: 2px dotted #CCC;
+  margin: 30px 0;
+  padding: 15px;
+  width: 90%; }
 
 .navigation-container {
   background-color: #333333;
@@ -133,6 +166,13 @@ section {
       margin-top: 40px;
       padding: 30px; }
 
+.section li {
+  background-color: #CCC;
+  color: white;
+  padding: 20px;
+  margin: 10px 0;
+  width: 100%; }
+
 .main-image h3 {
   padding: 0 0 15px; }
 
@@ -146,27 +186,8 @@ section {
   border: 1px solid #3cf971;
   color: #3cf971; }
 
-.main-image .new-file-wrapper {
-  border: 2px dotted #CCC;
-  padding: 15px;
-  width: 90%; }
-
-.text-edit-form label,
-.text-edit-form input,
-.text-edit-form select {
-  display: block; }
-
-.text-edit-form label,
-.text-edit-form select {
-  padding: 20px 0; }
-
 .text-edit-form textarea {
   display: none; }
-
-.text-edit-form input[type=text],
-.text-edit-form .text-input-box {
-  border: 1px solid black;
-  padding: 20px; }
 
 .text-edit-form .text-input-box {
   display: inline-block;
