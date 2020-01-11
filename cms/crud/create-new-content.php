@@ -12,12 +12,20 @@
         static private function insertTable($table, $columns, $values) {
             global $connection;
 
+            $insertedContent = NULL;
+
             $query  = " INSERT INTO $table ";
 			$query .= "(" . $columns . ") ";
 			$query .= "	VALUES 	";
             $query .= "(" . $values . ")";
 
             $r = mysqli_query($connection, $query);
+
+            if (mysqli_affected_rows($connection) == 1) {
+                $insertedContent = 'successful';
+            }
+
+            return $insertedContent;
         }
 
         static private function getKeysQuery($data, $type) {
@@ -45,6 +53,8 @@
         static public function createContent($post) {
             global $connection;
 
+            $updateSuccessStr = "unsuccessful";
+
             $data = [
                 'sectionId' => $post['sectionId'],
                 'parentItemID' => 0,
@@ -61,14 +71,13 @@
 
             $columns = self::getKeysQuery($data, "keys");
             $values = self::getKeysQuery($data, "values");
+            $insertedContent = self::insertTable('contentItems', $columns, $values);
 
-            self::insertTable('contentItems', $columns, $values);
-
-            if (mysqli_affected_rows($connection) == 1) {
-                header("Location: " . $post['currentUrl'] . "contentUpdate=successful");
-            } else {
-                header("Location: " . $post['currentUrl'] . "&contentUpdate=unsuccessful");
+            if ($insertedContent != NULL) {
+                $updateSuccessStr = "successful";
             }
+
+            header("Location: " . $post['currentUrl'] . "&contentUpdate={$updateSuccessStr}");
         }
     }
 
