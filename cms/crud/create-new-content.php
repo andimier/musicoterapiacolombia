@@ -13,6 +13,7 @@
             global $connection;
 
             $insertedContent = NULL;
+            $insertedId = NULL;
 
             $query  = " INSERT INTO $table ";
 			$query .= "(" . $columns . ") ";
@@ -23,25 +24,28 @@
 
             if (mysqli_affected_rows($connection) == 1) {
                 $insertedContent = 'successful';
+                $insertedId = mysqli_insert_id($connection);
             }
 
-            return $insertedContent;
+            return [
+                'insertedContent' => $insertedContent,
+                'insertedId' => $insertedId
+            ];
         }
 
-        static private function getKeysQuery($data, $type) {
-            $columns = $type == "keys" ? array_keys($data) : array_values($data);
+        static private function buildData($data, $type) {
             $columns_query = "";
 
-            for ($i = 0; $i < count($columns); $i++) {
+            for ($i = 0; $i < count($data); $i++) {
                 $separator = ", ";
-                $value = $columns[$i];
+                $value = $data[$i];
 
                 if ($i == 0) {
                     $separator = "";
                 }
 
-                if ($type == "values" && $i != 0 && is_string($columns[$i])) {
-                    $value = "'" . $columns[$i] . "'";
+                if ($type == "values" && $i != 0 && is_string($data[$i])) {
+                    $value = "'" . $data[$i] . "'";
                 }
 
                 $columns_query = $columns_query . $separator . $value;
@@ -50,12 +54,22 @@
             return $columns_query;
         }
 
-        static public function createContent($post) {
-            global $connection;
+        static private function getQueryData($data) {
+            return [
+                'columns' => self::buildData(array_keys($data), 'columns'),
+                'values' => self::buildData(array_values($data), 'values')
+            ];
+        }
 
-            $updateSuccessStr = "unsuccessful";
+        static private function getNewTextParameters($data, $contentId) {
+            return [
+                "columns" => "sectionId, contentId, title, subTitle, text",
+                "values" => "" . $data['sectionId'] . ", $contentId, 'Cambia este título', 'Cambia este subtítulo', 'Cambia este texto'"
+            ];
+        }
 
-            $data = [
+        static private function getNewContentParams($post) {
+            return [
                 'sectionId' => $post['sectionId'],
                 'parentItemID' => 0,
                 'contentType' => $post['contentType'],
@@ -68,12 +82,27 @@
                 'subtitle' => "unset",
                 'contentImageSet' => "iconos/photo.png"
             ];
+        }
 
-            $columns = self::getKeysQuery($data, "keys");
-            $values = self::getKeysQuery($data, "values");
-            $insertedContent = self::insertTable('contentItems', $columns, $values);
+        static public function createContent($post) {
+            global $connection;
 
-            if ($insertedContent != NULL) {
+            $updateSuccessStr = "unsuccessful";
+
+            $data = self::getNewContentParams($post);
+            $queryData = self::getQueryData($data);
+
+            $contentTableInsertion = self::insertTable('contentItems', $queryData['columns'], $queryData['values']);
+
+            // $textaTableParams = self::getNewTextParameters($data, $contentTableInsertion['insertedId']);
+
+            // $textTableInsertion = self::insertTable('texts', $textaTableParams['columns'], $textaTableParams['values']);
+
+            // if ($contentTableInsertion['insertedContent'] != NULL && $textTableInsertion['insertedContent'] != NULL) {
+            //     $updateSuccessStr = "successful";
+            // }
+
+            if ($contentTableInsertion['insertedContent'] != NULL) {
                 $updateSuccessStr = "successful";
             }
 
