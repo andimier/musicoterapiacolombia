@@ -2,7 +2,7 @@
 <h2>Edición de Contenido</h2>
     <h1><?php echo $data['title']; ?></h1>
 
-    <section>
+    <section class="section-content-wrapper">
         <?php require_once('components/main-image/main-image-html.php'); ?>
     </section>
 
