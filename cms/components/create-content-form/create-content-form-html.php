@@ -7,7 +7,14 @@
         <input type="hidden" name="contentId" value="<?php echo $contentId; ?>" />
         <input type="hidden" name="parentContentType" value="<?php echo $contentType; ?>" />
         <input type="hidden" name="currentUrl" value="<?php echo Utils::getCurrentUrl(); ?>" />
-        <input type="text" name="title" value="" class="letra_azul borde_puntos" size="50" maxlength="50" required/>
+        <input type="text"
+            name="title"
+            value=""
+            class="letra_azul borde_puntos input"
+            size="50"
+            maxlength="50"
+            required
+            placeholder="Escribe un título para el contenido"/>
 
         <label>
             Tipo de contenido:

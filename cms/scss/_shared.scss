@@ -15,7 +15,6 @@ body {
 }
 
 button,
-input[type=text],
 input[type=password] {
     padding: 15px 30px;
 }
@@ -55,7 +54,6 @@ select {
     height: 40px;
 }
 
-input[type=text],
 .text-input-box {
     border: 1px solid black;
     padding: 20px;
@@ -126,6 +124,11 @@ li a:hover {
     width: 90%;
 }
 
+.input {
+    border: 1px solid $black;
+    padding: 20px;
+}
+
 .required-field {
-    border: 2px solid red;
+    border: 2px solid $red;
 }

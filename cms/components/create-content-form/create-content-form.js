@@ -1,8 +1,12 @@
 function validateContentTypeSelection(event) {
-    event.preventDefault();
     if (!this.select.value) {
-
+        event.preventDefault();
         this.select.classList.add('required-field');
+    }
+
+    if (!this.title.value) {
+        event.preventDefault();
+        this.title.classList.add('required-field');
     }
 };
 
@@ -14,7 +18,8 @@ if (createContentForm) {
         var obj = {
             'sendBtn': sendBtn,
             'form': createContentForm,
-            'select': createContentForm.querySelector('select')
+            'select': createContentForm.querySelector('select'),
+            'title': createContentForm.querySelector('input[type=text]')
         }
 
         sendBtn.addEventListener('click', validateContentTypeSelection.bind(obj));
