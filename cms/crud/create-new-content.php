@@ -79,8 +79,8 @@
             return [
                 'sectionId' => $post['sectionId'],
                 'parentItemId' => 0,
-                'contentType' => $post['contentType'],
-                'contentDesignType' => isset($post['contentDesignType']) ? $post['contentDesignType'] : 'text',
+                'parentContentType' => $post['parentContentType'],
+                'contentType' => isset($post['contentType']) ? $post['contentType'] : 'text',
                 'galleryId' => 0,
                 'isSubContent' => 0, // must make a function to see if is subcontent
                 'visible' => 1,

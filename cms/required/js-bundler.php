@@ -12,4 +12,5 @@
 <!-- <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 <script src="js/general.js" type="text/javascript"></script> -->
 <script src="js/main.js" type="text/javascript"></script>
+<script src="components/create-content-form/create-content-form.js" type="text/javascript"></script>
 <script src="components/text-edit-form/text-edit.js" type="text/javascript"></script>

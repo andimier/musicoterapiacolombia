@@ -27,8 +27,8 @@
             <textarea name="item-text" id="item-text" cols="100" rows="14" ></textarea>
 
             <label> Tipo de contenido
-                <select name="contentDesignType">
-                    <option value="p" selected>Párrafo</option>
+                <select name="contentDesignType" required>
+                    <option value="p" >Párrafo</option>
                     <option value="ul">Lista estándar</option>
                     <option value="ol">Lista numerada</option>
                     <option value="pe">Perfil</option>
