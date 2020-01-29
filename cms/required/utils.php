@@ -1,7 +1,5 @@
 <?php
     class Utils {
-
-
         public static function getContentType($type) {
             return [
                 "section" => "sections",

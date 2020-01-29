@@ -22,6 +22,7 @@ function watch() {
 
     gulp.watch(sourceCSSFiles, styles);
     gulp.watch('./cms/**/*.php').on('change', browserSync.reload);
+    gulp.watch('./**/*.php').on('change', browserSync.reload);
 };
 
 exports.watch = watch;
