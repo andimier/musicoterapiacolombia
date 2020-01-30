@@ -1,7 +1,8 @@
+<?php require_once('nav.php'); ?>
+
 <div id="menu">
 	<div id="cnt_enlaces">
 		<div id="enlaces1">
-
 			<div id="hojasarriba"></div>
 			<div id="logo_pq"></div>
 
@@ -9,15 +10,24 @@
 				<a href="./" class="link_verde">inicio</a>
 			</div>
 
-			<div class="enlaces">
+			<nav class="enlaces">
 				<h3>Servicios</h3>
+
+				<?php $navItems = Nav::getSectionLinksData(); ?>
+
+				<?php for ($i = 0; $i < count($navItems); $i++): ?>
+					<a href="index.php?sectionId=<?php echo $navItems[$i]['sectionId']; ?>" class="link_gris1">
+						<?php echo $navItems[$i]['sectionTitle']; ?>
+					</a>
+				<?php endfor; ?>
+
 				<a href="musicoterapia-prenatal.php" class="link_gris1">musicoterapia prenatal</a>
 				<a href="estimulacion-temprana.php" class="link_gris2">estimulacion temprana</a>
 				<a href="metodo-suzuki.php" class="link_gris1" >Método Suzuki</a>
 				<a href="terapia-de-sonido.php" class="link_gris2">terapia de sonido</a>
 				<a href="fitzmaurice-voicework.php" class="link_gris1">Fitzmaurice Voicework</a>
 				<a href="meditacion-sonora-y-vibratoria.php" class="link_gris2">Meditación sonora y vibratoria</a>
-			</div>
+			</nav>
 
 			<div id="l1"></div>
 

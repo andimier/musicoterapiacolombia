@@ -30,6 +30,7 @@
 			</section>
 		</main>
 
+		<?php require_once('includes/marco.php'); ?>
 		<?php require_once("components/footer/footer-html.php"); ?>
 
 		<script>
@@ -99,7 +100,5 @@
 			}
 
 		</script>
-
-		<?php require_once('includes/marco.php'); ?>
 	</body>
 </html>
