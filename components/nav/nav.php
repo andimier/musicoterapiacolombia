@@ -5,7 +5,7 @@
             global $connection;
 
             $q = $pFunctions->getPhpQuery(
-                "SELECT * FROM sections",
+                "SELECT * FROM sections ORDER BY position",
                 $connection
             );
 

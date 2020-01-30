@@ -13,7 +13,7 @@
             $page = 'pages/home/home-html.php';
 
             if (isset($_GET['sectionId'])) {
-                $page = 'pages/home/section-html.php';
+                $page = 'pages/section/section-html.php';
             }
 
             return $page;
