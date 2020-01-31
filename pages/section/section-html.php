@@ -10,12 +10,14 @@
     <?php echo $_GET['sectionTitle']; ?>
 </h1>
 
-<?php foreach ($contentItems as &$val): ?>
-    <?php
-        $module = $val['module'];
-        $class = new $module();
-        $data = $class->getContentData($val['contentId']);
+<section class="section">
+    <?php foreach ($contentItems as &$val): ?>
+        <?php
+            $module = $val['module'];
+            $class = new $module();
+            $data = $class->getContentData($val['contentId']);
 
-        require($val['component']);
-    ?>
-<?php endforeach; ?>
+            require($val['component']);
+        ?>
+    <?php endforeach; ?>
+</section>
