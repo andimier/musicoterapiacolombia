@@ -29,8 +29,10 @@ a {
 
 
 
-
-/*========= COLORES ==============*/ 
+main {
+	padding-left: 300px;
+}
+/*========= COLORES ==============*/
 
 .verde1 {color:#15f54f}
 .verde2 {color:#999966}
@@ -86,7 +88,7 @@ a {
 	/*background-color:#f00;*/
 }
 
-/*========= CABEZOTE ==============*/ 
+/*========= CABEZOTE ==============*/
 
 #franja_cabeza{
 	position:fixed;
@@ -103,7 +105,7 @@ a {
 	height:55px;
 	background-color:#999966;
 	cursor:pointer;
-	
+
 }
 
 #fc_btnmenu h2{
@@ -143,7 +145,7 @@ a {
 	height:200px;
 	top:0;
 	left:0;
-	
+
 	background-image:url(../imagenes/top2.png);
 	background-repeat:no-repeat;
 	background-size:100%;
@@ -158,7 +160,7 @@ a {
 	/*background-color:#000;*/
 	/*background-image:url(../imagenes/top.png);
 	background-repeat:no-repeat;*/
-	
+
 }
 
 #cabezote #tt{
@@ -175,9 +177,9 @@ a {
 	font-style:italic;
 	font-weight:300;
 	/**/
-	
+
 	color:#999966;
-	
+
 }
 #tt h4{
 	padding: 2px 0 0 20px;
@@ -194,7 +196,7 @@ a {
 	float:right;
 	width:10px;
 	height:10px;
-	
+
 	/*background-color:#666;*/
 }
 
@@ -205,7 +207,7 @@ a {
 	height:100px;
 	margin-left:-90px;
 	/*background-color:#ff0;*/
-	
+
 	background-image:url(../imagenes/musica2.png);
 	background-repeat:no-repeat;
 	background-size:100%;
@@ -266,8 +268,8 @@ a {
 #pestana_menu{
 	display:none;
 	position:fixed;
-	
-	
+
+
 	top:0;
 	left:-250px;
 	background-color:#fff;
@@ -290,16 +292,16 @@ a {
 	left:100%;
 	margin-left:-85px;
 	cursor:pointer;
-	
+
 	background-image:url(../imagenes/btn-cerrar.png);
 	background-repeat:no-repeat;
 	background-size:100%;
-	
+
 }
 
 
 #menumv{
-	
+
 	width:100%;
 	/*background-color:#eee;*/
 }
@@ -312,12 +314,12 @@ a {
 }
 
 #enlaces2{
-	
+
 	width:95%;
 	padding:0 0 0 0;
 	padding:0 0 0 15px;
 	/*background-color:#00f;*/
-	
+
 }
 
 #enlaces2 h4{
@@ -331,7 +333,7 @@ a {
 	font-weight:100;
 	font-size:20px;
 	color:#999;
-	
+
 }
 
 .enlaces2{
@@ -358,7 +360,7 @@ a {
 #menu{
 	position:fixed;
 	width:250px;
-	
+
 	top:50px;
 	left:0;
 	padding:0 0 0 0;
@@ -397,7 +399,7 @@ a {
 	top:50%;
 	margin-top:-350px;
 	padding:0 0 0 5%;
-	
+
 /*background-color:#eee;*/
 }
 
@@ -424,7 +426,7 @@ a {
 	font-weight:100;
 	font-size:18px;
 	/*color:#fff;*/
-	
+
 }
 
 .enlaces h4{
@@ -441,14 +443,14 @@ a {
 	position:absolute;
 	width:160px;
 	height:95px;
-	
+
 	top:-10px;
 	left:0%;
-	
+
 	background-image:url(../imagenes/hojasarriba.png);
 	background-repeat:no-repeat;
 	background-size:100;
-	
+
 	z-index:-1;
 }
 
@@ -456,14 +458,14 @@ a {
 	position:absolute;
 	width:75px;
 	height:25px;
-	
+
 	top:68%;
 	left:10%;
-	
+
 	background-image:url(../imagenes/hojasmedio.png);
 	background-repeat:no-repeat;
 	background-size:100;
-	
+
 	z-index:-2;
 }
 
@@ -499,14 +501,14 @@ a {
 	position:absolute;
 	width:85px;
 	height:180px;
-	
+
 	top:0;
 	left:50%;
 	margin-left:-42.5px;
 	background-image:url(../imagenes/logo.png);
 	background-repeat:no-repeat;
 	background-size:80%;
-	
+
 	/*border:1px solid #000;*/
 	/*background-color:#f00;*/
 
@@ -526,10 +528,10 @@ a {
 	position:absolute;
 	width:280px;
 	height:85px;
-	
+
 	top:50px;
 	left:-15px;
-	
+
 	background-repeat:no-repeat;
 	background-size:100%;
 
@@ -539,10 +541,10 @@ a {
 	position:absolute;
 	width:70px;
 	height:50px;
-	
+
 	top:75%;
 	left:10%;
-	
+
 	background-image:url(../imagenes/hojasabajo.png);
 	background-repeat:no-repeat;
 	background-size:100;
@@ -554,9 +556,9 @@ a {
 
 #cnt_arbol{
 	position:absolute;
-	
+
 	/*background-color:#0ff;*/
-	
+
 	background-image:url(../imagenes/arbol.png);
 	background-repeat:no-repeat;
 	background-size:100%;
@@ -570,20 +572,20 @@ a {
 	position:fixed;
 	width:100%;
 	height:85px;
-	
+
 	bottom:0;
 	left:0;
-	
+
 	background-color:#fff;
 }
 .cnt_contenidos{
 	width:auto;
 	margin:0 0 0 250px;
 	padding:0 30px 30px 30px;
-	
+
 	/*border:1px solid #000;*/
 	/*background-color:#ff0*/
-	
+
 }
 
 #cnt_noticias{
@@ -593,7 +595,7 @@ a {
 	bottom:0;
 	left:60%;
 	margin-left:-200px;
-	
+
 	/*border:1px solid #000;*/
 }
 
@@ -608,7 +610,7 @@ a {
 	width:100%;
 	height:58px;
 	padding:0px 0 0 0;
-	
+
 	font-family:'Times New Roman', serif;
 	font-size:18px;
 	font-style:italic;
@@ -616,27 +618,27 @@ a {
 	text-align:center;
 	line-height:5em;
 	color:#999;
-	
+
 	/*background-color:#eee;*/
 }
 
 #cnt_noticias .btn1 .btn_gris{
-	
+
 	width:100%;
 	height:12px;
 	margin: 0 0 0 0 ;
 	background-color:#999;
-	
-	
+
+
 }
 
 #cnt_noticias .btn2{
 	float:left;
 	width:38%;
 	height:100%;
-	
+
 	/*background-color:#eee;*/
-	
+
 	font-family:'Times New Roman', Times, serif;
 	font-size:20px;
 	font-style:italic;
@@ -644,7 +646,7 @@ a {
 	text-align:center;
 	line-height:2em;
 	color:#999;
-	
+
 	background-image:url(../imagenes/hojas1.png);
 	background-repeat:no-repeat;
 	background-size:100%;
@@ -667,7 +669,7 @@ a {
 	bottom:0;
 	left:0;
 	/*background-color:#000;*/
-	
+
 	background-image:url(../imagenes/partitura.png);
 	background-repeat:no-repeat;
 	background-size:100%;
@@ -681,12 +683,12 @@ a {
 	bottom:20px;
 	right:20px;
 	/*background-color:#000;*/
-	
+
 	background-image:url(../imagenes/face.png);
 	background-repeat:no-repeat;
 	background-size:100%;
-	
-	
+
+
 }
 
 #video{
@@ -697,7 +699,7 @@ a {
 	right:0;
 	margin-top:-50px;
 	/*background-color:#000;*/
-	
+
 	background-image:url(../imagenes/video.png);
 	background-repeat:no-repeat;
 	background-size:100%;
@@ -706,25 +708,25 @@ a {
 
 
 .contenidos{
-	
+
 	width:auto;
 	height:auto;
 	margin:70px auto 0px auto;
-	
+
 	/*background-color:#0ff;*/
-	
+
 }
 
 .contenidos h2 {
 	width:200px;
 	padding:0 0 10px 0;
 	border-bottom:1px solid #999966;
-	
+
 	font-family:'Times New Roman', serif;
 	font-style:italic;
 	font-size:35px;
 	font-weight:300;
-	
+
 	text-align:center;
 }
 
@@ -802,12 +804,12 @@ a {
 	height:auto;
 	margin:50px 20% 0 20%;
 	/*background-color:#ff0*/
-	
+
 }
 
 
 .sede{
-	
+
 	width:100%;
 	margin:10px 2% 10px 0;
 	/*background-color:#f00;*/
@@ -833,17 +835,17 @@ a {
 }
 
 #cnt_sedes p{
-	
+
 	width:80%;
 	height:80%;
 	padding:10px 10px 50px 10px;
 	margin:auto;
-	
+
 	font-size:20px;
 	font-style:italic;
 	text-align:center;
 
-	
+
 }
 
 
@@ -871,8 +873,8 @@ a {
 	margin:auto;
 	overflow:hidden;
 	/*background-color:#0ff;*/
-	
-	
+
+
 }
 
 .img img {
@@ -885,14 +887,14 @@ a {
 	height:50px;
 	margin:0px auto;
 /*background-color:#f00;*/
-	
+
 	font-family:'Time New Roman', Times, serif;
 	font-size:18px;
 	font-style:italic;
 	text-align:center;
-	
+
 	padding:15px 10px 5px 10px;
-	
+
 }
 
 .mascara{
@@ -901,11 +903,11 @@ a {
 	height:100%;
 	top:0;
 	left:0;
-	
+
 	background-image:url(../imagenes/mascara.png);
 	background-repeat:no-repeat;
 	background-size:100%;
-	
+
 	cursor:pointer;
 }
 
@@ -945,15 +947,15 @@ a {
 	float:left;
 	width:25%;
 	margin: 0 20px 0 20px;
-	
+
 	text-align:center;
 
 	background-image:url(../imagenes/fondo-personal.png);
 	background-repeat:no-repeat;
 	background-size:100%;
-	
+
 	/*background-color:#999;*/
-	
+
 }
 
 .persona img {width:100%;}
@@ -966,7 +968,7 @@ a {
 	width:85%;
 	margin:auto;
 	padding:60px 4% 0 4%;
-	
+
 	font-style:'Times New Roman', Times, serif;
 	font-size:29px;
 	color:#fff;
