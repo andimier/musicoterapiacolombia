@@ -6,11 +6,11 @@
     // require_once('components/profile/profile.php');
 ?>
 
-<h1>
-    <?php echo $_GET['sectionTitle']; ?>
-</h1>
+<section class="section main-content-wrapper">
+    <h1 class="section-title">
+        <?php echo $_GET['sectionTitle']; ?>
+    </h1>
 
-<section class="section">
     <?php foreach ($contentItems as &$val): ?>
         <?php
             $module = $val['module'];

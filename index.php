@@ -21,13 +21,11 @@
 		<?php require_once("components/nav/nav-html.php"); ?>
 
 		<main class="main-container">
-			<section id="editing-container">
-				<?php
-					require_once(
-						MainController::getPage()
-					);
-				?>
-			</section>
+			<?php
+				require_once(
+					MainController::getPage()
+				);
+			?>
 		</main>
 
 		<?php require_once('includes/marco.php'); ?>
