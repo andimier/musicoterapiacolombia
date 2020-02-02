@@ -1,4 +1,11 @@
 
+<?php
+	require_once("required/connection.php");
+	require_once("required/qs.php");
+	require_once("required/php-functions.php");
+	require_once("required/main-controller.php");
+?>
+
 <!doctype html>
 <html>
 	<head>
@@ -10,6 +17,9 @@
 	</head>
 
 	<body>
+		<?php require_once("components/header/header-html.php"); ?>
+		<?php require_once("components/nav/nav-html.php"); ?>
+
 		<div class="cnt_contenidos">
 			<div class="contenidos">
 				<h2 class="negro">Talleres</h2>
@@ -104,5 +114,6 @@
 		</div>
 
 		<?php require_once('includes/marco.php'); ?>
+		<?php require_once("components/footer/footer-html.php"); ?>
 	</body>
 </html>
