@@ -21,12 +21,12 @@
 					</a>
 				<?php endfor; ?>
 
-				<a href="musicoterapia-prenatal.php" class="link_gris1">musicoterapia prenatal</a>
+				<!-- <a href="musicoterapia-prenatal.php" class="link_gris1">musicoterapia prenatal</a>
 				<a href="estimulacion-temprana.php" class="link_gris2">estimulacion temprana</a>
 				<a href="metodo-suzuki.php" class="link_gris1" >Método Suzuki</a>
 				<a href="terapia-de-sonido.php" class="link_gris2">terapia de sonido</a>
 				<a href="fitzmaurice-voicework.php" class="link_gris1">Fitzmaurice Voicework</a>
-				<a href="meditacion-sonora-y-vibratoria.php" class="link_gris2">Meditación sonora y vibratoria</a>
+				<a href="meditacion-sonora-y-vibratoria.php" class="link_gris2">Meditación sonora y vibratoria</a> -->
 			</nav>
 
 			<div id="l1"></div>
