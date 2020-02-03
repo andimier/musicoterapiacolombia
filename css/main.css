@@ -15,8 +15,6 @@ p {
   font-size: 14px;
   font-style: italic;
   font-weight: 300;
-  margin-top: 20px;
-  padding: 0 150px 0 0;
   text-align: justify; }
 
 a {
@@ -24,7 +22,13 @@ a {
   text-decoration: none; }
 
 .main-container {
-  padding-top: 50px; }
+  padding: 150px 50px 100px; }
+  @media screen and (min-width: 651px) {
+    .main-container {
+      padding-top: 100px; } }
+  @media screen and (min-width: 900px) {
+    .main-container {
+      padding: 65px 200px 0 350px; } }
   .main-container * {
     font-family: "Times New Roman", "Arial"; }
   .main-container .section-title {

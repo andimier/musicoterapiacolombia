@@ -12,7 +12,6 @@
 		<title>Musicoterapia Colombia, Liliana Medina Ferreira, magister en musicoterapia, Bogotá Colombia</title>
 		<meta name="description" content="Ofrecemos un espacio en el que utilizamos la música y todos sus elementos al servicio del ser humano Integral.">
 		<meta name="keywords" content="liliana, medina, ferreira, musicoterapia, prenatal, estimulación, temprana, metodo, suzuki, clases, violín, musica, padres, bebes, danza, bogota, colombia ">
-
 		<?php require_once('includes/tags.php'); ?>
 	</head>
 
