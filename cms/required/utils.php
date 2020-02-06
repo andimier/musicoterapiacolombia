@@ -54,7 +54,7 @@
             $isContentTypeSet = isset($_GET['contentType']);
 
             if ($isContentTypeSet && $isContentTypeSet == 'allSections') {
-                $page = 'components/edit-sections/edit-sections.php';
+                $page = 'components/edit-sections/edit-sections-html.php';
             }
 
             if ($isContentTypeSet && is_numeric($isContentTypeSet)) {
@@ -87,6 +87,18 @@
 
             $q = $pFunctions->getPhpQuery(
                 "SELECT * FROM $table WHERE " . $qStr . $l,
+                $connection
+            );
+
+            return $q;
+        }
+
+        public static function getAllRows($table) {
+            global $pFunctions;
+            global $connection;
+
+            $q = $pFunctions->getPhpQuery(
+                "SELECT * FROM $table",
                 $connection
             );
 

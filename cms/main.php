@@ -19,7 +19,7 @@
         <?php include_once('components/navigation/nav.php'); ?>
 
         <main class="main-container">
-            <div id="cnt_edicion">
+            <div>
                 <!-- <section>
                     <h3>
                         Hola!

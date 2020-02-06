@@ -69,7 +69,8 @@ li a:hover {
 
 .main-container {
   grid-column: 2 / 4;
-  padding: 60px 20px; }
+  min-height: 100vh;
+  padding: 60px 60px; }
 
 .header {
   background-color: #000;
