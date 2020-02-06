@@ -58,4 +58,18 @@
             padding: 5px 0;
         }
     }
+
+    .edit-sections-link-container {
+        padding: 0 0 25px 0;
+
+    }
+
+    a.edit-sections-link {
+        border-bottom: 1px dotted;
+        color: white;
+
+        &:hover {
+            color: $grey;
+        }
+    }
 }

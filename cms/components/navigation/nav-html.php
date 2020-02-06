@@ -21,6 +21,7 @@
         </p>
     </section>
 
+
 	<nav class="navigation">
         <h2>Secciones</h2>
 
@@ -40,6 +41,10 @@
             </ol>
         <?php endif; ?>
 
-		<a href="albumes.php">+ albumes</a>
+        <div class="edit-sections-link-container">
+            <a href="main.php?contentType=allSections" class="edit-sections-link">+ Editar secciones</a>
+        </div>
+
+		<a href="albumes.php">+ Editar albumes</a>
 	</nav>
 </section>

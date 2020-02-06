@@ -51,7 +51,13 @@
             */
             $page = 'components/welcome-page/welcome-page-html.php';
 
-            if (isset($_GET['contentType'])) {
+            $isContentTypeSet = isset($_GET['contentType']);
+
+            if ($isContentTypeSet && $isContentTypeSet == 'allSections') {
+                $page = 'components/edit-sections/edit-sections.php';
+            }
+
+            if ($isContentTypeSet && is_numeric($isContentTypeSet)) {
                 $editType = $_GET['contentType'];
                 $parentFolder = 'components/edit-' . $editType;
                 $file = '/edit-' . $editType . '.php';
