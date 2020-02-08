@@ -1,5 +1,5 @@
 <div class="create-content-form" data-component="create-content-form">
-    <h3>Insertar nuevo Contenido:</h3>
+    <h3>Insertar nueva Sección:</h3>
 
     <form enctype="multipart/form-data" method="post" action="crud/create-new-section.php">
         <input type="hidden" name="currentUrl" value="<?php echo Utils::getCurrentUrl(); ?>" />
