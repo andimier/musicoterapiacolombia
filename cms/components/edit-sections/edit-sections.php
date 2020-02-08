@@ -4,16 +4,21 @@
             global $pFunctions;
 
             $section = Utils::getAllRows('sections');
-            $data = [];
+            $data = [
+                'items' => [],
+                'nextItemPosition' => 0
+            ];
 
             if ($section && !empty($section)) {
                 while ($d = $pFunctions->getFetchArray($section)) {
-                    array_push($data, [
+                    array_push($data['items'], [
                         "sectionId" => $d['id'],
                         "sectionTitle" => $d['title'],
                         "sectionPosition" => $d['position']
                     ]);
                 }
+
+                $data['nextItemPosition'] = count($data) + 1;
 
                 return $data;
             }

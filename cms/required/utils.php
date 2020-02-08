@@ -50,14 +50,14 @@
                 text
             */
             $page = 'components/welcome-page/welcome-page-html.php';
+            $contentType = $_GET['contentType'];
+            $isContentTypeSet = isset($contentType);
 
-            $isContentTypeSet = isset($_GET['contentType']);
-
-            if ($isContentTypeSet && $isContentTypeSet == 'allSections') {
+            if ($isContentTypeSet && $contentType == 'allSections') {
                 $page = 'components/edit-sections/edit-sections-html.php';
             }
 
-            if ($isContentTypeSet && is_numeric($isContentTypeSet)) {
+            if ($isContentTypeSet && isset($_GET['sectionId'])) {
                 $editType = $_GET['contentType'];
                 $parentFolder = 'components/edit-' . $editType;
                 $file = '/edit-' . $editType . '.php';
