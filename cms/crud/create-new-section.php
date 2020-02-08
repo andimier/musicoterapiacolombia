@@ -4,7 +4,7 @@
 
     class CreateNewSection {
         public static function getUrl($currentUrl, $updateSuccessStr) {
-            $url = '';
+            $url = $currentUrl;
             $qd = strpos($currentUrl, '&') ? '' : '&';
 
             if (strpos($currentUrl, 'contentUpdate')) {
@@ -44,7 +44,6 @@
 
     if (isset($_POST['createSection']) && isset($_POST['nextItemPosition'])) {
         $new_section = CreateNewSection::createSection($_POST);
-
         $url = CreateNewSection::getUrl(
             $_POST['currentUrl'],
             $new_section != NULL  ?  'successful' : 'unseccessful'
