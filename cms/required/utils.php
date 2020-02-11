@@ -8,6 +8,19 @@
             ][$type];
         }
 
+        public static function replaceCharacters($str) {
+            $arr = [
+                "á" => "a",
+                "é" => "e",
+                "í" => "i",
+                "ó" => "o",
+                "ú" => "u",
+                " " => ""
+            ];
+
+            return str_replace(array_keys($arr), array_values($arr), $str);
+        }
+
         function redirect_to($location = NULL) {
             if ($location != NULL) {
                 header("Location: {$location}");
@@ -66,6 +79,18 @@
             }
 
             return $page;
+        }
+
+        public static function getAllSections() {
+            global $connection;
+            global $pFunctions;
+
+            $q = $pFunctions->getPhpQuery(
+                "SELECT * FROM sections",
+                $connection
+            );
+
+            return $q;
         }
 
         public static function getMainImage($imageSet) {
