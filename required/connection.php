@@ -5,7 +5,7 @@
 	mysqli_set_charset($connection, 'utf8');
 
 	if (!$connection){
-		die("La conexion a la base de datos fallo: " . mysql_error());
+		die("La conexion a la base de datos fallo: " . mysqli_error($connection));
 	}
 
 	$db_select = mysqli_select_db($connection, "musicote_base");

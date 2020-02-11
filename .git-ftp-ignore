@@ -1,0 +1,35 @@
+# Git
+.gitignore
+.git-ftp-ignore
+
+# SASS
+scss/*
+
+# Other
+README.md
+
+# PHP
+error_log
+phpinfo.php
+
+# TASKS
+gulpfile.js
+gulpfile-concat.js
+
+# PACKAGES
+package.json
+
+# MAC
+.DS_Store
+
+# Folders
+.vscode/
+.git
+node_modules/
+
+# CMS
+cms/scss/*
+.DS_Store
+error_log
+conexion/
+
