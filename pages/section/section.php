@@ -1,5 +1,7 @@
 <?php
     class Section {
+        public static $title = '';
+
         static private function getSectionContents($sectionId) {
             global $pFunctions;
             global $connection;
@@ -30,10 +32,31 @@
             ][$contentType];
         }
 
+        static private function getSection() {
+            global $pFunctions;
+            global $connection;
+
+            $section = $_GET['section'];
+
+            $q = $pFunctions->getPhpQuery(
+                "SELECT id, title FROM sections WHERE url = '${section}'",
+                $connection
+            );
+
+            return $q;
+        }
+
         static public function getContentItemsData() {
             global $pFunctions;
             $data = [];
-            $content = self::getSectionContents($_GET['sectionId']);
+            $content = NULL;
+            $section = $pFunctions->getFetchArray(self::getSection());
+
+            if ($section) {
+                $sectionId = $section['id'];
+                $content = self::getSectionContents($sectionId);
+                self::$title = $section['title'];
+            }
 
             if ($content) {
                 while ($d = $pFunctions->getFetchArray($content)) {
@@ -43,7 +66,6 @@
                         "contentType" => $d['contentType'],
                         "component" => self::getComponent($d['contentType']),
                         "module" => self::getModule($d['contentType'])
-                        //"position" => $d['position'],
                     ]);
                 }
             }
@@ -53,4 +75,5 @@
     }
 
     $contentItems = Section::getContentItemsData();
+    $sectionTitle = Section::$title;
 ?>

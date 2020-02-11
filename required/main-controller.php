@@ -12,7 +12,7 @@
         public static function getPage() {
             $page = 'pages/home/home-html.php';
 
-            if (isset($_GET['sectionId'])) {
+            if (isset($_GET['section'])) {
                 $page = 'pages/section/section-html.php';
             }
 

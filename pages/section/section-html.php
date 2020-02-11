@@ -8,7 +8,7 @@
 
 <section class="section main-content-wrapper">
     <h1 class="section-title">
-        <?php echo $_GET['sectionTitle']; ?>
+        <?php echo $sectionTitle; ?>
     </h1>
 
     <?php foreach ($contentItems as &$val): ?>

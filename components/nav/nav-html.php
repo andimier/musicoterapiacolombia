@@ -16,7 +16,7 @@
 				<?php $navItems = Nav::getSectionLinksData(); ?>
 
 				<?php for ($i = 0; $i < count($navItems); $i++): ?>
-					<a href="index.php?sectionId=<?php echo $navItems[$i]['sectionId'] . "&sectionTitle=" . urlencode($navItems[$i]['sectionTitle']); ?>" class="link_gris1">
+					<a href="index.php?section=<?php echo $navItems[$i]['sectionUrl']; ?>" class="link_gris1">
 						<?php echo $navItems[$i]['sectionTitle']; ?>
 					</a>
 				<?php endfor; ?>

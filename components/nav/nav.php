@@ -22,7 +22,8 @@
                 array_push($data, [
                     "sectionTitle" => $d['title'],
                     "position" => $d['position'],
-                    "sectionId" => $d['id']
+                    "sectionId" => $d['id'],
+                    "sectionUrl" => $d['url']
                 ]);
             }
 
