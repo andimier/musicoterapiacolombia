@@ -35,15 +35,17 @@
             $data = [];
             $content = self::getSectionContents($_GET['sectionId']);
 
-            while ($d = $pFunctions->getFetchArray($content)) {
-                array_push($data, [
-                    "contentId" => $d['id'],
-                    "title" => $d['title'],
-                    "contentType" => $d['contentType'],
-                    "component" => self::getComponent($d['contentType']),
-                    "module" => self::getModule($d['contentType'])
-                    //"position" => $d['position'],
-                ]);
+            if ($content) {
+                while ($d = $pFunctions->getFetchArray($content)) {
+                    array_push($data, [
+                        "contentId" => $d['id'],
+                        "title" => $d['title'],
+                        "contentType" => $d['contentType'],
+                        "component" => self::getComponent($d['contentType']),
+                        "module" => self::getModule($d['contentType'])
+                        //"position" => $d['position'],
+                    ]);
+                }
             }
 
             return $data;

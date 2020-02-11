@@ -16,18 +16,21 @@
             global $pFunctions;
 
             $content = $this->getContentText($contentId);
-            $data = [];
 
-            while ($d = $pFunctions->getFetchArray($content)) {
-                $data = [
-                    "textId" => $d['id'],
-                    "title" => $d['title'],
-                    "subtitle" => $d['subTitle'],
-                    "text" => $d['text']
-                ];
+            if ($content != NULL) {
+                $data = [];
+
+                while ($d = $pFunctions->getFetchArray($content)) {
+                    $data = [
+                        "textId" => $d['id'],
+                        "title" => $d['title'],
+                        "subtitle" => $d['subTitle'],
+                        "text" => $d['text']
+                    ];
+                }
+
+                return $data;
             }
-
-            return $data;
         }
     }
 ?>
