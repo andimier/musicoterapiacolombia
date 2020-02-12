@@ -1,6 +1,6 @@
 <?php require_once('nav.php'); ?>
 
-<div id="menu">
+<div id="nav-column">
 	<div id="cnt_enlaces">
 		<div id="enlaces1">
 			<div id="hojasarriba"></div>
@@ -10,16 +10,19 @@
 				<a href="./" class="link_verde">inicio</a>
 			</div>
 
-			<nav class="enlaces">
+			<nav class="nav">
 				<h3>Servicios</h3>
 
 				<?php $navItems = Nav::getSectionLinksData(); ?>
-
-				<?php for ($i = 0; $i < count($navItems); $i++): ?>
-					<a href="index.php?section=<?php echo $navItems[$i]['sectionUrl']; ?>" class="link_gris1">
-						<?php echo $navItems[$i]['sectionTitle']; ?>
-					</a>
-				<?php endfor; ?>
+				<ul class="nav-items-container">
+					<?php for ($i = 0; $i < count($navItems); $i++): ?>
+						<li>
+							<a href="index.php?section=<?php echo $navItems[$i]['sectionUrl']; ?>" class="nav-item">
+								<?php echo $navItems[$i]['sectionTitle']; ?>
+							</a>
+						</li>
+					<?php endfor; ?>
+				</ul>
 
 				<!-- <a href="musicoterapia-prenatal.php" class="link_gris1">musicoterapia prenatal</a>
 				<a href="estimulacion-temprana.php" class="link_gris2">estimulacion temprana</a>

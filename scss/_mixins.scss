@@ -9,3 +9,26 @@
         @content;
     }
 }
+
+@mixin nav-section-title {
+    font-family:'Times New Roman', Times, serif;
+    font-style: italic;
+    font-weight: 100;
+    font-size: 18px;
+}
+
+@mixin nav-link {
+    color: $grey-link;
+    font-family: 'bebas_neueregular';
+    font-weight: 300;
+    font-size: 20px;
+    text-transform: capitalize;
+
+    @include desktop {
+        font-size: 22px;
+    }
+
+    &:hover {
+        color: $green-text;
+    }
+}

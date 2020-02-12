@@ -1,0 +1,36 @@
+#nav-column {
+    border-right: 1px solid #ddd;
+	left: 0;
+	padding: 0;
+    position: fixed;
+	top: 0;
+    width: 250px;
+
+    @include desktop {
+        top: 50px;
+    }
+
+    .nav {
+        h3{
+            @include nav-section-title;
+        }
+    }
+
+    .nav-items-container {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        a {
+            @include nav-link;
+        }
+    }
+
+    .enlaces
+
+    .enlaces h4{
+        font-family:'bebas_neueregular';
+        font-size:15px;
+        font-weight:300;
+    }
+}
