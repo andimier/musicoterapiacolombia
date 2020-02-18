@@ -56,29 +56,27 @@
             }
         }
 
+        private static function getAllSectionsTypePage() {
+            return 'components/edit-sections/edit-sections-html.php';
+        }
+
+        private static function getContentTypePage(){
+            $editType = $_GET['contentType'];
+            $parentFolder = 'components/edit-' . $editType;
+
+            return $parentFolder . '/edit-' . $editType . '.php';
+        }
+
         public static function getEditingComponent() {
-            /*
-                sections
-                content
-                text
-            */
-            $page = 'components/welcome-page/welcome-page-html.php';
             $contentType = $_GET['contentType'];
             $isContentTypeSet = isset($contentType);
+            $pages = [
+                "allSections" => self::getAllSectionsTypePage(),
+                "section" => self::getContentTypePage(),
+                "content" => self::getContentTypePage()
+            ];
 
-            if ($isContentTypeSet && $contentType == 'allSections') {
-                $page = 'components/edit-sections/edit-sections-html.php';
-            }
-
-            if ($isContentTypeSet && isset($_GET['sectionId'])) {
-                $editType = $_GET['contentType'];
-                $parentFolder = 'components/edit-' . $editType;
-                $file = '/edit-' . $editType . '.php';
-
-                $page = $parentFolder . $file;
-            }
-
-            return $page;
+            return $pages[$contentType];
         }
 
         public static function getAllSections() {

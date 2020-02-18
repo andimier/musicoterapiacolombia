@@ -8,11 +8,13 @@
         </a>
     </section>
 
+    <!--
     <section class="section-content-wrapper">
         <?php
-            require_once('components/main-image/main-image-html.php');
+            //require_once('components/main-image/main-image-html.php');
         ?>
     </section>
+    -->
 
     <section id="insert-section" class="section-content-wrapper">
         <?php

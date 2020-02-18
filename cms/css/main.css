@@ -43,6 +43,14 @@ input,
 select {
   display: block; }
 
+input[type=text] {
+  border: 1px solid black;
+  padding: 20px;
+  width: 100%; }
+
+textarea {
+  width: 100%; }
+
 label,
 select {
   padding: 20px 0; }
@@ -196,8 +204,12 @@ li a:hover {
 
 .edit-sections input[type=text] {
   background-color: #CCC;
+  border: none;
   padding: 20px;
   width: 100%; }
+
+.edit-content h2 {
+  padding-top: 0; }
 
 .section li {
   background-color: #CCC;
@@ -222,8 +234,11 @@ li a:hover {
 .text-edit-form textarea {
   display: none; }
 
+.text-edit-form .text-area-wrapper {
+  padding-top: 20px; }
+
 .text-edit-form .text-input-box {
   display: inline-block;
   height: 300px;
   overflow: scroll;
-  width: 90%; }
+  width: 100%; }
