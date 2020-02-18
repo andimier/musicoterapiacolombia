@@ -23,7 +23,16 @@
 
 
 	<nav class="navigation">
-        <h2>Secciones</h2>
+        <div class="edit-sections-link-container">
+            <a href="main.php?contentType=allSections">
+                <h2>+ Editar secciones</h2>
+
+                <p>En esta sección podrás crear, ordenar y cambiar los nombres a las secciones.</p>
+            </a>
+        </div>
+
+        <h2>Contenidos en secciones</h2>
+        <p>Cada uno de estos enlaces te lleva a una sección en dónde puedes editar sus contenidos.</p>
 
         <?php $navItems = Nav::getItemsData(); ?>
         <?php if ($navItems): ?>
@@ -41,10 +50,8 @@
             </ol>
         <?php endif; ?>
 
-        <div class="edit-sections-link-container">
-            <a href="main.php?contentType=allSections" class="edit-sections-link">+ Editar secciones</a>
-        </div>
-
-		<a href="albumes.php">+ Editar albumes</a>
+        <a href="albumes.php">
+            <h2>+ Editar albumes</h2>
+        </a>
 	</nav>
 </section>
