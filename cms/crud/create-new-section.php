@@ -6,63 +6,6 @@
 
     class CreateNewSection {
 
-        private static function getSectionsData() {
-            global $pFunctions;
-
-            $sections = Utils::getAllSections();
-            $data = [];
-
-            if ($sections) {
-                while ($s = $pFunctions->getFetchArray($sections)) {
-                    array_push($data, [
-                        'id' => $s['id'],
-                        'title' => $s['title'],
-                        'position' => $s['position'],
-                        'url' => $s['url']
-                    ]);
-                }
-            }
-
-            return $data;
-        }
-
-        private static function getUrls() {
-            $data = self::getSectionsData();
-            $urls = [];
-
-            if (!empty($data)) {
-                for ($i = 0; $i < count($data); $i++) {
-                    array_push($urls, $data[$i]['url']);
-                }
-            }
-
-            return $urls;
-        }
-
-        private static function getNormalStr($str) {
-            $nTitle = Utils::replaceCharacters($str);
-
-            return strtolower(preg_replace('/[^A-Za-z0-9_-]/', '', $nTitle));
-        }
-
-        private static function getFilteredItems($title, $urls) {
-            return array_filter($urls, function($val) use ($title) {
-                return $val == $title;
-            });
-        }
-
-        private static function getParsedURL($title) {
-            $title = self::getNormalStr($title);
-            $items = count(self::getFilteredItems($title, self::getUrls()));
-            $n_title = NULL;
-
-            if ($items > 0) {
-                $n_title = $title . '-' . strval($items + 1);
-            }
-
-            return $n_title ? $n_title : $title;
-        }
-
         public static function getUrl($currentUrl, $updateSuccessStr) {
             $url = $currentUrl;
             $qd = strpos($currentUrl, '&') ? '' : '&';
@@ -80,7 +23,7 @@
 
             $insertedContent = NULL;
             $title = $post['title'];
-            $url = self::getParsedURL($title);
+            $url = SectionUtils::getParsedURL($title, NULL);
             $nextItemPosition = $post['nextItemPosition'];
 
             $q = "INSERT INTO sections (contentType, title, position, url, contentImageSet) ";

@@ -1,0 +1,14 @@
+.edit-sections {
+    li {
+        background-color: $grey;
+        color: $white;
+        margin: 10px 0;
+        width: 100%;
+    }
+
+    input[type=text] {
+        background-color: $grey;
+        padding: 20px;
+        width: 100%;
+    }
+}
