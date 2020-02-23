@@ -17,8 +17,6 @@
         static private function getComponent($contentType) {
             return [
                 "p" => 'components/paragraph/paragraph-html.php',
-                "ul" => 'components/u-list/u-list-html.php',
-                "ol" => 'components/u-list/o-list-html.php',
                 "pe" => 'components/profile/profile-html.php'
             ][$contentType];
         }
@@ -26,8 +24,6 @@
         static private function getModule($contentType) {
             return [
                 "p" => 'Paragraph',
-                "ul" => 'UList',
-                "ol" => 'OList',
                 "pe" => 'Profile'
             ][$contentType];
         }

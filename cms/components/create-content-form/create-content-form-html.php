@@ -21,8 +21,6 @@
             <select name="contentType">
                 <option value="" selected disabled>Selecciona un tipo de contenido</option>
                 <option value="p">Párrafo</option>
-                <option value="ul">Lista estándar</option>
-                <option value="ol">Lista numerada</option>
                 <option value="pe">Perfil</option>
             </select>
         </label>

@@ -68,15 +68,17 @@
         }
 
         public static function getEditingComponent() {
-            $contentType = $_GET['contentType'];
-            $isContentTypeSet = isset($contentType);
-            $pages = [
-                "allSections" => self::getAllSectionsTypePage(),
-                "section" => self::getContentTypePage(),
-                "content" => self::getContentTypePage()
-            ];
+            $default_page = 'components/welcome-page/welcome-page-html.php';
+            
+            if (isset($_GET['contentType'])) {
+                $page = [
+                    "allSections" => self::getAllSectionsTypePage(),
+                    "section" => self::getContentTypePage(),
+                    "content" => self::getContentTypePage()
+                ][$_GET['contentType']];
+            }
 
-            return $pages[$contentType];
+            return $page ? $page : $default_page;
         }
 
         public static function getAllSections() {
