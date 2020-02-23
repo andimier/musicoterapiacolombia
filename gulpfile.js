@@ -28,7 +28,11 @@ function compileSiteStyles() {
 
 function watch() {
     browserSync.init({
-        proxy: 'localhost/musicoterapia/cms'
+        // Linux
+        // proxy: 'localhost/prueba/musicoterapiacolombia/'
+        // Default 
+        // Linux
+        proxy: 'localhost/musicoterapiacolombia/'
     });
 
     gulp.watch(sitesourcefiles, compileSiteStyles);

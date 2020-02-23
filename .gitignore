@@ -13,3 +13,5 @@ cms/images
 # Bash Tasks #
 #######################
 *.sh
+
+gulpfile.js
