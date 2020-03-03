@@ -16,6 +16,7 @@
 	</head>
 
 	<body>
+		<h3>Test titulo musicoterapia Colombia</h3>
 		<?php require_once("components/header/header-html.php"); ?>
 		<?php require_once("components/nav/nav-html.php"); ?>
 
