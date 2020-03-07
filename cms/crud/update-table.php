@@ -38,10 +38,42 @@
 
             return  $insertedContent;
         }
+
+        static private function deleteSectionContents($table, $sectionId) {
+            global $connection;
+
+            $q = "DELETE FROM $table WHERE sectionId = " . $sectionId;
+
+            mysqli_query($connection, $q);
+        }
+
+        static public function deleteSections($post) {
+            global $connection;
+
+            if (isset($post)) {
+                for ($i = 0; $i < count($post); $i++) {
+                    $sectionId = $post[$i];
+
+                    $q = "DELETE FROM sections WHERE id = " . $post[$i];
+                    mysqli_query($connection, $q);
+
+                    self::deleteSectionContents('contentItems', $sectionId);
+                    self::deleteSectionContents('texts', $sectionId);
+                }
+            }
+        }
     }
 
     if (isset($_POST['update-sections-table'])) {
-        $update = UpdateTable::updateRow($_POST);
+        $filteredPost = array_filter($_POST, function($val) {
+            return !is_array($val);
+        });
+
+        $update = UpdateTable::updateRow($filteredPost);
+
+        if (isset($_POST['eliminar']) && !empty($_POST['eliminar'])) {
+            UpdateTable::deleteSections($_POST['eliminar']);
+		}
 
         header("Location: " . $_POST['currentUrl'] . "&contentUpdate={$update}");
     }

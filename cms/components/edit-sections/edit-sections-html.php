@@ -16,6 +16,9 @@
                             name="section-<?php echo $data['items'][$i]['sectionId']; ?>"
                             value="<?php echo $data['items'][$i]['sectionTitle']; ?>"
                         />
+                        <label>Eliminar
+                            <input type="checkbox" class="check" name="eliminar[]" value="<?php echo $data['items'][$i]['sectionId']; ?>" />
+                        </label>
                     </li>
                 <?php endfor; ?>
             </ul>
