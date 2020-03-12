@@ -26,20 +26,24 @@ function compileSiteStyles() {
         .pipe(browserSync.stream());
 }
 
-function watch() {
+function watchPHPFiles(done) {
+    browserSync.reload({ stream: false });
+    done();
+};
+
+function wt() {
     browserSync.init({
         // Linux
-        // proxy: 'localhost/prueba/musicoterapiacolombia/'
+        proxy: 'localhost/prueba/musicoterapiacolombia/'
+
         // Default 
-        // Linux
-        proxy: 'localhost/musicoterapiacolombia/'
+        // proxy: 'localhost/musicoterapiacolombia/'
     });
 
     gulp.watch(sitesourcefiles, compileSiteStyles);
     gulp.watch(cmssourcefiles, compileCmsStyles);
-
-    gulp.watch('./cms/**/*.php').on('change', browserSync.reload);
+    gulp.watch('./cms/**/*.php', gulp.series(compileCmsStyles, watchPHPFiles));
     gulp.watch('./**/*.php').on('change', browserSync.reload);
 };
 
-exports.watch = watch;
+exports.watch = wt;
