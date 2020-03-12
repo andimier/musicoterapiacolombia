@@ -15,3 +15,5 @@ cms/images
 *.sh
 
 gulpfile.js
+
+.vscode/*
