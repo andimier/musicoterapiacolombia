@@ -197,10 +197,22 @@ li a:hover {
       padding: 30px; }
 
 .edit-sections li {
+  align-items: center;
   background-color: #CCC;
   color: white;
+  display: flex;
   margin: 10px 0;
   width: 100%; }
+  .edit-sections li .delete-section-wrapper {
+    background-color: red;
+    align-items: center;
+    display: flex;
+    padding: 10px;
+    margin-right: 15px; }
+    .edit-sections li .delete-section-wrapper p {
+      color: #333333;
+      font-size: 11px;
+      padding: 0 5px 0; }
 
 .edit-sections input[type=text] {
   background-color: #CCC;

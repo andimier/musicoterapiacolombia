@@ -68,7 +68,7 @@
         }
 
         public static function getEditingComponent() {
-            $default_page = 'components/welcome-page/welcome-page-html.php';
+            $page = 'components/welcome-page/welcome-page-html.php';
             
             if (isset($_GET['contentType'])) {
                 $page = [
@@ -78,7 +78,7 @@
                 ][$_GET['contentType']];
             }
 
-            return $page ? $page : $default_page;
+            return $page;
         }
 
         public static function getAllSections() {

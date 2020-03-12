@@ -16,9 +16,13 @@
                             name="section-<?php echo $data['items'][$i]['sectionId']; ?>"
                             value="<?php echo $data['items'][$i]['sectionTitle']; ?>"
                         />
-                        <label>Eliminar
-                            <input type="checkbox" class="check" name="eliminar[]" value="<?php echo $data['items'][$i]['sectionId']; ?>" />
-                        </label>
+                        <div class="delete-section-wrapper">
+                            <p>eliminar</p>
+                            <p></p>
+                            <input type="checkbox" 
+                                class="delete-section" 
+                                name="eliminar[]" value="<?php echo $data['items'][$i]['sectionId']; ?>" />
+                        <div>
                     </li>
                 <?php endfor; ?>
             </ul>
