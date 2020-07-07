@@ -8,12 +8,9 @@ cms/images
 
 # IDE - VSCode #
 #######################
-.vscode/*
+.vscode/
 
 # Bash Tasks #
 #######################
 *.sh
-
 gulpfile.js
-
-.vscode/*

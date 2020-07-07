@@ -33,11 +33,7 @@ function watchPHPFiles(done) {
 
 function wt() {
     browserSync.init({
-        // Linux
         proxy: 'localhost/prueba/musicoterapiacolombia/'
-
-        // Default 
-        // proxy: 'localhost/musicoterapiacolombia/'
     });
 
     gulp.watch(sitesourcefiles, compileSiteStyles);
