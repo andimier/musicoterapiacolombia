@@ -45,6 +45,7 @@ a {
 
 #nav-column {
   border-right: 1px solid #ddd;
+  display: none;
   left: 0;
   padding: 0;
   position: fixed;
@@ -52,6 +53,7 @@ a {
   width: 250px; }
   @media screen and (min-width: 900px) {
     #nav-column {
+      display: block;
       top: 50px; } }
   #nav-column .nav h3 {
     font-family: 'Times New Roman', Times, serif;

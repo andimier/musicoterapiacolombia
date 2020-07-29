@@ -1,5 +1,6 @@
 #nav-column {
     border-right: 1px solid #ddd;
+    display: none;
 	left: 0;
 	padding: 0;
     position: fixed;
@@ -7,6 +8,7 @@
     width: 250px;
 
     @include desktop {
+        display: block;
         top: 50px;
     }
 
@@ -20,9 +22,9 @@
         list-style: none;
         margin: 0;
         padding: 0;
-
+        
         a {
-            @include nav-link;
+            @include nav-link;                    
         }
     }
 
