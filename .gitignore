@@ -3,6 +3,11 @@
 node_modules
 package-lock.json
 
+/required/upstream
+required/constants.php
+required/connection.php
+cnx
+
 # Images
 cms/images
 
