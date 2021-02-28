@@ -6,6 +6,9 @@ package-lock.json
 /required/upstream
 required/constants.php
 required/connection.php
+cms/required/constants.php
+cms/required/connection.php
+
 cnx
 
 # Images
